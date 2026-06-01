@@ -336,7 +336,7 @@
       } = await client.auth.getUser();
 
       if (!user) {
-        window.location.href = "auth_supabase_vampire.html";
+        window.location.href = "Déconnexion.html";
         return;
       }
 
@@ -514,7 +514,7 @@
 
     document.getElementById("logoutBtn").addEventListener("click", async () => {
       await client.auth.signOut();
-      window.location.href = "auth_supabase_vampire.html";
+      window.location.href = "index.html";
     });
 
     init();
