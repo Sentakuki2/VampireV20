@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" href="icon.png">
+  <link rel="stylesheet" href="style.css">
+  <title>Dashboard - Vampire V20</title>
+
+</head>
+<body>
+  <div class="layout">
+    <aside>
+      <div class="logo">
+        <h1>VAMPIRE</h1>
+        <p>Fiches V20</p>
+      </div>
+
+      <nav>
+        <button class="menu-btn active" data-target="homeSection">Accueil</button>
+        <button class="menu-btn" data-target="myCharactersSection">Mes fiches</button>
+        <button class="menu-btn" data-target="createCharacterSection">Créer une fiche</button>
+        <button class="menu-btn" data-target="playerCharactersSection" id="playerCharactersMenuBtn" style="display:none">
+          Fiches joueurs
+        </button>
+        <button class="menu-btn" data-target="disciplineSection">Disciplines</button>
+        <button class="menu-btn" data-target="historiquesSection">Historiques</button>
+        <button class="menu-btn" data-target="atoutsHandicapsSection">Atouts & Handicaps</button>
+        <button class="menu-btn" id="logoutBtn">Déconnexion</button>
+      </nav>
+    </aside>
+
+    <main>
+      <div class="topbar">
+        <h2>Dashboard</h2>
+
+        <div class="user-box">
+          <img id="avatar" src="" alt="Avatar Discord">
+
+          <div class="user-info">
+            <div><strong id="displayName">Utilisateur</strong></div>
+            <div id="userRole">Joueur</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-panel">
+        <section class="section active" id="homeSection">
+          <h3>Bienvenue</h3>
+          <p class="placeholder">
+          
+          </p>
+        </section>
+
+        <section class="section" id="myCharactersSection">
+          <h3>Mes fiches</h3>
+
+          <div class="card-grid" id="myCharactersContainer">
+            <p class="placeholder">Aucune fiche chargée.</p>
+          </div>
+        </section>
+
+        <section class="section" id="createCharacterSection">
+          <h3>Créer une fiche</h3>
+
+          <p class="placeholder">
+            Crée une nouvelle fiche Vampire V20.
+          </p>
+
+          <button class="action-btn" onclick="window.location.href='fiche_vampire_v20_editable.html'">
+            Ouvrir la fiche V20
+          </button>
+        </section>
+
+        <section class="section" id="playerCharactersSection">
+          <h3>Fiches joueurs</h3>
+
+          <p class="placeholder">
+            Visible seulement pour les MJ. Cette section affiche les fiches créées par les autres joueurs.
+          </p>
+
+          <div class="card-grid" id="playerCharactersContainer">
+            <p class="placeholder">Aucune fiche joueur chargée.</p>
+          </div>
+        </section>
+        <section class="section" id="disciplineSection">
+          <h3>Disciplines</h3>
+
+          <div class="discipline-grid">
+            <button class="discipline-card" data-discipline="alienation">
+              Aliénation
+            </button> 
+            <button class="discipline-card" data-discipline="animalisme">
+              Animalisme
+            </button>
+            <button class="discipline-card" data-discipline="augure">
+              Augure
+            </button>
+            <button class="discipline-card" data-discipline="celerite">
+              Célérité
+            </button>
+            <button class="discipline-card" data-discipline="chimerie">
+              Chimérie
+            </button>
+            <button class="discipline-card" data-discipline="daimonion">
+              Daimonion
+            </button>
+            <button class="discipline-card" data-discipline="domination">
+              Domination
+            </button>
+            <button class="discipline-card" data-discipline="force_d_ame">
+              Force d'âme
+            </button>
+            <button class="discipline-card" data-discipline="necromancie">
+              Nécromancie
+            </button>
+            <button class="discipline-card" data-discipline="obtenebration">
+              Obténébration
+            </button>
+            <button class="discipline-card" data-discipline="obeah">
+              Obéah
+            </button>
+            <button class="discipline-card" data-discipline="occultation">
+              Occultation
+            </button>
+            <button class="discipline-card" data-discipline="presence">
+              Présence
+            </button>
+            <button class="discipline-card" data-discipline="proteisme">
+              Protéisme
+            </button>            
+            <button class="discipline-card" data-discipline="puissance">
+              Puissance
+            </button>
+            <button class="discipline-card" data-discipline="quietus">
+              Quietus
+            </button>
+            <button class="discipline-card" data-discipline="serpentis">
+              Serpentis
+            </button>
+            <button class="discipline-card" data-discipline="thaumaturgie">
+              Thaumaturgie
+            </button>
+            <button class="discipline-card" data-discipline="vicissitude">
+              Vicissitude
+            </button>
+          </div>
+
+          <div id="disciplineDetail" class="discipline-detail hidden">
+            <button id="closeDiscipline" type="button">✕ Fermer</button>
+
+            <h2 id="disciplineTitle"></h2>
+            <p id="disciplineIntro"></p>
+
+            <div id="disciplinePowers"></div>
+          </div>
+        </section>
+        <section class="section" id="atoutsHandicapsSection">
+          <h3>Atouts & Handicaps</h3>
+
+          <div class="discipline-grid">
+            <button class="discipline-card" data-ah-category="atouts_physiques">
+              Atouts physiques
+            </button>
+
+            <button class="discipline-card" data-ah-category="atouts_mentaux">
+              Atouts mentaux
+            </button>
+
+            <button class="discipline-card" data-ah-category="atouts_sociaux">
+              Atouts sociaux
+            </button>
+
+            <button class="discipline-card" data-ah-category="atouts_surnaturels">
+              Atouts surnaturels
+            </button>
+
+            <button class="discipline-card" data-ah-category="handicaps_physiques">
+              Handicaps physiques
+            </button>
+
+            <button class="discipline-card" data-ah-category="handicaps_mentaux">
+              Handicaps mentaux
+            </button>
+
+            <button class="discipline-card" data-ah-category="handicaps_sociaux">
+              Handicaps sociaux
+            </button>
+
+            <button class="discipline-card" data-ah-category="handicaps_surnaturels">
+              Handicaps surnaturels
+            </button>
+          </div>
+
+          <div id="ahDetail" class="discipline-detail hidden">
+            <button id="closeAh" type="button">✕ Fermer</button>
+
+            <h2 id="ahTitle"></h2>
+            <p id="ahIntro"></p>
+
+            <div id="ahItems"></div>
+          </div>
+        </section>
+
+        <section class="section" id="historiquesSection">
+          <h2>Historiques</h2>
+
+          <div class="discipline-grid">
+
+            <button class="discipline-card" data-historique="allies">
+              Alliés
+            </button>
+
+            <button class="discipline-card" data-historique="contacts">
+              Contacts
+            </button>
+
+            <button class="discipline-card" data-historique="generation">
+              Génération
+            </button>
+
+            <button class="discipline-card" data-historique="influence">
+              Influence
+            </button>
+
+            <button class="discipline-card" data-historique="mentor">
+              Mentor
+            </button>
+
+            <button class="discipline-card" data-historique="renommee">
+              Renommée
+            </button>
+
+            <button class="discipline-card" data-historique="ressources">
+              Ressources
+            </button>
+
+            <button class="discipline-card" data-historique="servants">
+              Servants
+            </button>
+
+            <button class="discipline-card" data-historique="statut">
+              Statut
+            </button>
+
+            <button class="discipline-card" data-historique="troupeau">
+              Troupeau
+            </button>
+
+            <button class="discipline-card" data-historique="domaine">
+              Domaine
+            </button>
+
+          </div>
+
+          <div id="historiqueDetail" class="discipline-detail hidden">
+
+            <button id="closeHistorique" type="button">
+              ✕ Fermer
+            </button>
+
+            <h2 id="historiqueTitle"></h2>
+
+            <p id="historiqueIntro"></p>
+
+            <div id="historiqueItems"></div>
+
+          </div>
+
+        </section>
+      </div>
+    </main>
+  </div>
+
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const SUPABASE_URL = "https://tthiqzxxpiiebdmnnnik.supabase.co";
+    const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_vrUgI0qR9cwHFJ74QZbnEQ_GKo7GSGj";
+
+    const client = supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
+
+    function getDisplayNameFromUser(user) {
+      const metadata = user.user_metadata || {};
+
+      return (
+        metadata.full_name ||
+        metadata.name ||
+        metadata.preferred_username ||
+        metadata.user_name ||
+        user.email ||
+        "Utilisateur Discord"
+      );
+    }
+
+    function getAvatarFromUser(user) {
+      const metadata = user.user_metadata || {};
+      return metadata.avatar_url || metadata.picture || "";
+    }
+
+    async function ensurePlayerProfile(user) {
+      const metadata = user.user_metadata || {};
+
+      const displayName = getDisplayNameFromUser(user);
+      const avatarUrl = getAvatarFromUser(user);
+
+      const discordId =
+        metadata.provider_id ||
+        metadata.sub ||
+        null;
+
+      const { error } = await client
+        .from("profiles")
+        .upsert({
+          id: user.id,
+          email: user.email,
+          display_name: displayName,
+          avatar_url: avatarUrl,
+          discord_id: discordId
+        }, {
+          onConflict: "id"
+        });
+
+      if (error) {
+        console.error("Erreur profil :", error.message);
+      }
+    }
+
+    async function init() {
+      const {
+        data: { user }
+      } = await client.auth.getUser();
+
+      if (!user) {
+        window.location.href = "auth_supabase_vampire.html";
+        return;
+      }
+
+      await ensurePlayerProfile(user);
+
+      const { data: profile, error: profileError } = await client
+        .from("profiles")
+        .select("display_name, role, avatar_url")
+        .eq("id", user.id)
+        .maybeSingle();
+
+      if (profileError) {
+        console.error("Erreur lecture profil :", profileError.message);
+      }
+
+      const displayName =
+        profile?.display_name ||
+        getDisplayNameFromUser(user);
+
+      const role = profile?.role || "player";
+
+      const avatarUrl =
+        profile?.avatar_url ||
+        getAvatarFromUser(user);
+
+      document.getElementById("displayName").textContent = displayName;
+      document.getElementById("userRole").innerHTML =
+        role === "gm" ? "👑 MJ" : "🧛 Joueur";
+
+      const avatar = document.getElementById("avatar");
+
+      if (avatarUrl) {
+        avatar.src = avatarUrl;
+      } else {
+        avatar.style.display = "none";
+      }
+
+      await loadMyCharacters(user.id);
+
+      if (role === "gm") {
+        document.getElementById("playerCharactersMenuBtn").style.display = "block";
+        await loadPlayerCharacters(user.id);
+      }
+    }
+
+    function characterCard(character, options = {}) {
+      const showOwner = options.showOwner || false;
+      const ownerName =
+        character.profiles?.display_name ||
+        character.owner_display_name ||
+        character.owner_id ||
+        "Inconnu";
+
+      return `
+        <article class="character-card">
+          <h3>${character.name || "Sans nom"}</h3>
+          ${showOwner ? `<p><strong>Joueur :</strong> ${ownerName}</p>` : ""}
+          <p><strong>Clan :</strong> ${character.clan || "-"}</p>
+
+          <div class="card-actions">
+            <button class="action-btn" onclick="window.location.href='fiche_vampire_v20_editable.html?id=${character.id}'">
+              Ouvrir
+            </button>
+
+            <button class="action-btn secondary" onclick="downloadPdf('${character.id}')">
+              Télécharger PDF
+            </button>
+          </div>
+        </article>
+      `;
+    }
+
+    async function loadMyCharacters(userId) {
+      const container = document.getElementById("myCharactersContainer");
+
+      const { data, error } = await client
+        .from("characters")
+        .select("id, owner_id, name, clan, created_at")
+        .eq("owner_id", userId)
+        .order("created_at", { ascending: false });
+
+      if (error) {
+        console.error(error);
+        container.innerHTML = `<p class="placeholder">Erreur de chargement de tes fiches.</p>`;
+        return;
+      }
+
+      if (!data.length) {
+        container.innerHTML = `<p class="placeholder">Aucune fiche sauvegardée.</p>`;
+        return;
+      }
+
+      container.innerHTML = data.map(character =>
+        characterCard(character, { showOwner: false })
+      ).join("");
+    }
+
+   async function loadPlayerCharacters(currentUserId) {
+      const container = document.getElementById("playerCharactersContainer");
+
+      const { data: characters, error } = await client
+        .from("characters")
+        .select("id, owner_id, name, clan, created_at")
+        .neq("owner_id", currentUserId)
+        .order("created_at", { ascending: false });
+
+      if (error) {
+        console.error(error);
+        container.innerHTML = `<p class="placeholder">Erreur de chargement des fiches joueurs.</p>`;
+        return;
+      }
+
+      if (!characters.length) {
+        container.innerHTML = `<p class="placeholder">Aucune fiche joueur sauvegardée.</p>`;
+        return;
+      }
+
+      const ownerIds = [...new Set(characters.map(character => character.owner_id))];
+
+      const { data: profiles } = await client
+        .from("profiles")
+        .select("id, display_name")
+        .in("id", ownerIds);
+
+      const profilesById = Object.fromEntries(
+        (profiles || []).map(profile => [profile.id, profile])
+      );
+
+      container.innerHTML = characters.map(character => {
+        const ownerName =
+          profilesById[character.owner_id]?.display_name ||
+          character.owner_id;
+
+        return characterCard(
+          { ...character, owner_display_name: ownerName },
+          { showOwner: true }
+        );
+      }).join("");
+    }
+
+    function downloadPdf(characterId) {
+      const iframe = document.createElement("iframe");
+      iframe.style.position = "fixed";
+      iframe.style.right = "0";
+      iframe.style.bottom = "0";
+      iframe.style.width = "0";
+      iframe.style.height = "0";
+      iframe.style.border = "0";
+      iframe.src = `fiche_vampire_v20_editable.html?id=${characterId}&print=1`;
+
+      document.body.appendChild(iframe);
+
+      setTimeout(() => {
+        iframe.remove();
+      }, 10000);
+    }
+
+    document.querySelectorAll(".menu-btn[data-target]").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".menu-btn").forEach(btn => {
+          btn.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        const target = button.dataset.target;
+
+        document.querySelectorAll(".section").forEach(section => {
+          section.classList.remove("active");
+        });
+
+        document.getElementById(target).classList.add("active");
+      });
+    });
+
+    document.getElementById("logoutBtn").addEventListener("click", async () => {
+      await client.auth.signOut();
+      window.location.href = "auth_supabase_vampire.html";
+    });
+
+    init();
+  </script>
+  <script src="discipline.js"></script>
+  <script src="atouthandicap.js"></script>
+   <script src="historique.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" href="icon.png">
+  <link rel="stylesheet" href="style.css">
+  <title>Connexion - Fiches Vampire V20</title>
+</head>
+<body class="auth-page">
+    <main class="card">
+    <div class="content">
+      <h1>VAMPIRE</h1>
+      <p class="subtitle">Fiches V20</p>
+
+      <p class="intro">
+        Connecte-toi avec Discord pour accéder à tes fiches.
+        Un profil joueur est créé automatiquement à la première connexion.
+      </p>
+
+      <button id="discordLoginBtn" class="discord-btn" type="button">
+        Connexion avec Discord
+      </button>
+
+      <button id="logoutBtn" class="logout-btn" type="button">
+        Déconnexion
+      </button>
+
+      <div id="message" class="message"></div>
+
+      <section id="sessionBox" class="session">
+        <strong>Session active</strong>
+        <div id="sessionInfo"></div>
+      </section>
+
+      <div id="nextLink" class="next-link">
+        <a href="dashboard_vampire_v20.html">Aller au dashboard</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const SUPABASE_URL = "https://tthiqzxxpiiebdmnnnik.supabase.co";
+    const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_vrUgI0qR9cwHFJ74QZbnEQ_GKo7GSGj";
+
+    const DASHBOARD_URL =
+      "http://127.0.0.1:5500/Nouveau_projet/dashboard_vampire_v20.html";
+
+    const client = supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
+
+    const discordLoginBtn = document.getElementById("discordLoginBtn");
+    const logoutBtn = document.getElementById("logoutBtn");
+    const message = document.getElementById("message");
+    const sessionBox = document.getElementById("sessionBox");
+    const sessionInfo = document.getElementById("sessionInfo");
+    const nextLink = document.getElementById("nextLink");
+
+    function showMessage(text, type = "success") {
+      message.textContent = text;
+      message.className = `message ${type}`;
+    }
+
+    function getDiscordAvatar(user) {
+      const metadata = user.user_metadata || {};
+      return metadata.avatar_url || metadata.picture || "";
+    }
+
+    function getDisplayName(user) {
+      const metadata = user.user_metadata || {};
+
+      return (
+        metadata.full_name ||
+        metadata.name ||
+        metadata.preferred_username ||
+        metadata.user_name ||
+        user.email ||
+        "Utilisateur Discord"
+      );
+    }
+
+    async function ensurePlayerProfile(user) {
+      const displayName = getDisplayName(user);
+      const avatarUrl = getDiscordAvatar(user);
+      const metadata = user.user_metadata || {};
+      const discordId =
+        metadata.provider_id ||
+        metadata.sub ||
+        user.identities?.find(identity => identity.provider === "discord")?.identity_data?.sub ||
+        null;
+
+      const { error } = await client
+        .from("profiles")
+        .upsert({
+          id: user.id,
+          email: user.email,
+          display_name: displayName,
+          avatar_url: avatarUrl,
+          discord_id: discordId
+        }, {
+          onConflict: "id",
+          ignoreDuplicates: true
+        });
+
+      if (error) {
+        console.error("Erreur création profil :", error.message);
+      }
+    }
+
+    async function getProfile(user) {
+      await ensurePlayerProfile(user);
+
+      const { data: profile, error } = await client
+        .from("profiles")
+        .select("display_name, role, avatar_url")
+        .eq("id", user.id)
+        .maybeSingle();
+
+      if (error) {
+        console.warn("Impossible de lire le profil :", error.message);
+      }
+
+      return profile || {
+        display_name: getDisplayName(user),
+        role: "player",
+        avatar_url: getDiscordAvatar(user)
+      };
+    }
+
+    async function refreshSession() {
+      const {
+        data: { user },
+        error
+      } = await client.auth.getUser();
+
+      if (error || !user) {
+        discordLoginBtn.style.display = "block";
+        logoutBtn.style.display = "none";
+        sessionBox.style.display = "none";
+        nextLink.style.display = "none";
+        sessionInfo.innerHTML = "";
+        return;
+      }
+
+      const profile = await getProfile(user);
+
+      const displayName = profile.display_name || getDisplayName(user);
+      const avatarUrl = profile.avatar_url || getDiscordAvatar(user);
+      const role = profile.role || "player";
+
+      discordLoginBtn.style.display = "none";
+      logoutBtn.style.display = "block";
+      sessionBox.style.display = "block";
+      nextLink.style.display = "block";
+
+      sessionInfo.innerHTML = `
+        <div class="profile-line">
+          ${avatarUrl ? `<img class="avatar" src="${avatarUrl}" alt="Avatar Discord">` : ""}
+          <div>
+            <div><strong>${displayName}</strong></div>
+            <div>Rôle : ${role === "gm" ? "MJ" : "Joueur"}</div>
+            <div>${user.email || "Email non fourni par Discord"}</div>
+          </div>
+        </div>
+      `;
+
+      showMessage("Connexion active.", "success");
+    }
+
+    discordLoginBtn.addEventListener("click", async () => {
+      showMessage("Redirection vers Discord...", "success");
+
+      const { error } = await client.auth.signInWithOAuth({
+        provider: "discord",
+        options: {
+          redirectTo: DASHBOARD_URL
+        }
+      });
+
+      if (error) {
+        showMessage(error.message, "error");
+      }
+    });
+
+    logoutBtn.addEventListener("click", async () => {
+      await client.auth.signOut();
+      showMessage("Déconnecté.", "success");
+      await refreshSession();
+    });
+
+    client.auth.onAuthStateChange(() => {
+      refreshSession();
+    });
+
+    refreshSession();
+  </script>
+</body>
+</html>

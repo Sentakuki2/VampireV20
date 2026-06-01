@@ -1,0 +1,1188 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" href="icon.png">
+  <title>Fiche Vampire V20 éditable</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 8mm;
+    }
+
+    :root {
+      --ink: #111;
+      --line: #222;
+      --paper: #f7f4ec;
+      --muted: #666;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #333;
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      padding: 0.75rem;
+      background: #111;
+      font-family: Arial, sans-serif;
+    }
+
+    .toolbar button,
+    .toolbar label {
+      border: 1px solid #777;
+      border-radius: 0.4rem;
+      padding: 0.5rem 0.75rem;
+      background: #eee;
+      color: #111;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .toolbar input[type="file"] {
+      display: none;
+    }
+
+    .sheet {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 20px auto;
+      padding: 10mm 12mm;
+      background: var(--paper);
+      border: 4px double var(--ink);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.55);
+      position: relative;
+    }
+
+    .sheet::before {
+      content: "";
+      position: absolute;
+      inset: 5mm;
+      border: 2px solid var(--ink);
+      pointer-events: none;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3mm;
+      line-height: 1;
+    }
+
+    .anniversary {
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 48px;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      letter-spacing: 0.6em;
+      margin-left: 0.6em;
+    }
+
+    .top-fields {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+      gap: 8mm;
+      margin-bottom: 3mm;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .field-line {
+      display: flex;
+      align-items: baseline;
+      gap: 3px;
+      margin-bottom: 2mm;
+      white-space: nowrap;
+    }
+
+    .field-line input,
+    .field-line textarea {
+      flex: 1;
+      width: 100%;
+      min-width: 0;
+      max-width: 100%;
+      border: none;
+      border-bottom: 1px solid var(--line);
+      background: transparent;
+      font-family: inherit;
+      font-size: 14px;
+      padding: 0 2px;
+      outline: none;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 3mm;
+      margin: 2.5mm 0 1mm;
+      font-size: 21px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .section-title::before,
+    .section-title::after {
+      content: "";
+      flex: 1;
+      border-top: 3px solid var(--line);
+    }
+
+    .section-title span {
+      line-height: 1;
+    }
+
+    .columns-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 7mm;
+    }
+
+    .columns-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8mm;
+    }
+
+    .subsection h3 {
+      margin: 0 0 1mm;
+      text-align: center;
+      font-size: 17px;
+    }
+
+    .trait-row {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 2px;
+      min-height: 5mm;
+      font-size: 14px;
+    }
+
+    .trait-row .trait-name {
+      white-space: nowrap;
+    }
+
+    .trait-row .line {
+      border-bottom: 1px solid var(--line);
+      height: 1px;
+      transform: translateY(4px);
+    }
+
+    .dots {
+      display: inline-flex;
+      gap: 1px;
+      white-space: nowrap;
+    }
+
+    .dot,
+    .box {
+      width: 9px;
+      height: 9px;
+      display: inline-block;
+      border: 1.5px solid var(--ink);
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .dot {
+      border-radius: 50%;
+    }
+
+    .dot.filled,
+    .box.filled {
+      background: transparent;
+      border-width: 4.5px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .free-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 2mm;
+      margin-bottom: 1mm;
+    }
+
+    .free-row input {
+      border: none;
+      border-bottom: 1px solid var(--line);
+      background: transparent;
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+      width: 100%;
+    }
+
+    .advantages {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 7mm;
+    }
+
+    .lower {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10mm;
+      margin-top: 3mm;
+    }
+
+    .mini-title {
+      display: flex;
+      align-items: center;
+      gap: 2mm;
+      margin: 2mm 0 1mm;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .mini-title::before,
+    .mini-title::after {
+      content: "";
+      flex: 1;
+      border-top: 2px solid var(--line);
+    }
+
+    .merit-header,
+    .merit-row {
+      display: grid;
+      grid-template-columns: 1fr 8mm;
+      gap: 2mm;
+      font-size: 12px;
+      align-items: end;
+    }
+
+    .merit-row input {
+      border: none;
+      border-bottom: 1px solid var(--line);
+      background: transparent;
+      font-family: inherit;
+      font-size: 12px;
+      outline: none;
+      width: 100%;
+    }
+
+    .tracker {
+      text-align: center;
+      margin-bottom: 3mm;
+      font-size: 13px;
+    }
+
+    .tracker .dots,
+    .tracker .boxes {
+      justify-content: center;
+      margin-top: 1mm;
+    }
+
+    .health-row {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 2mm;
+      align-items: center;
+      font-size: 13px;
+      min-height: 5mm;
+    }
+
+    .footer-note {
+      position: absolute;
+      left: 12mm;
+      right: 12mm;
+      bottom: 5mm;
+      text-align: center;
+      font-size: 9px;
+      color: var(--muted);
+    }
+
+
+    .sheet.page-two {
+      min-height: 297mm;
+    }
+
+    .box.locked {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .history-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8mm;
+      margin-top: 3mm;
+    }
+
+    .domain-card {
+      border: 1px solid rgba(0,0,0,0.35);
+      padding: 3mm;
+      margin-bottom: 3mm;
+      background: rgba(255,255,255,0.22);
+    }
+
+    .domain-title-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 3mm;
+      margin-bottom: 2mm;
+    }
+
+    .domain-title-row input,
+    .domain-sub-row input,
+    .notes-area textarea {
+      border: none;
+      border-bottom: 1px solid var(--line);
+      background: transparent;
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+      width: 100%;
+    }
+
+    .domain-sub-row {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 2mm;
+      align-items: end;
+      margin-bottom: 1.5mm;
+      font-size: 13px;
+    }
+
+    .notes-area textarea {
+      min-height: 24mm;
+      border: 1px solid var(--line);
+      padding: 2mm;
+      resize: vertical;
+    }
+
+    .page-two .notes-area textarea {
+      min-height: 22mm;
+    }
+
+
+
+    .advantages {
+      grid-template-columns: 2fr 1fr;
+      gap: 8mm;
+      align-items: start;
+    }
+
+    .disciplines-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 6mm;
+    }
+
+    .virtues-shift {
+      padding-left: 4mm;
+    }
+
+
+
+    .ability-row {
+      grid-template-columns: auto minmax(18mm, 1fr) auto;
+      gap: 2px;
+    }
+
+    .specialty-input {
+      border: none;
+      border-bottom: 1px dotted var(--line);
+      background: transparent;
+      font-family: inherit;
+      font-size: 11px;
+      font-style: italic;
+      outline: none;
+      width: 100%;
+      min-width: 0;
+      padding: 0 2px;
+      transform: translateY(1px);
+    }
+
+    .specialty-input::placeholder {
+      color: rgba(0,0,0,0.35);
+      font-style: italic;
+    }
+
+    .ritual-block {
+      margin-top: 18mm;
+    }
+
+    .ritual-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 2mm;
+      margin-bottom: 1.3mm;
+    }
+
+    .ritual-row input {
+      border: none;
+      border-bottom: 1px solid var(--line);
+      background: transparent;
+      font-family: inherit;
+      font-size: 13px;
+      outline: none;
+      width: 100%;
+    }
+
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 0;
+      }
+
+      html,
+      body {
+        background: white;
+        margin: 0;
+        padding: 0;
+      }
+
+      .toolbar {
+        display: none;
+      }
+
+      .sheet {
+        width: 210mm;
+        min-height: 297mm;
+        height: 297mm;
+        margin: 0;
+        padding: 8mm 10mm;
+        box-shadow: none;
+        border: 4px double var(--ink);
+        page-break-after: always;
+        break-after: page;
+        overflow: hidden;
+      }
+
+      .sheet:last-of-type {
+        page-break-after: auto;
+        break-after: auto;
+      }
+
+      .sheet::before {
+        inset: 4mm;
+      }
+
+      .footer-note {
+        bottom: 4mm;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+      <button type="button" onclick="window.location.href='dashboard_vampire_v20.html'">Retour</button>
+    <button type="button" id="saveBtn">Sauvegarder</button>
+    <button type="button" id="resetBtn">Vider</button>
+  </div>
+
+  <main class="sheet">
+    <div class="content">
+      <header>
+        <div class="anniversary">Édition 20e anniversaire</div>
+        <h1>VAMPIRE</h1>
+        <div class="subtitle">LA MASCARADE</div>
+      </header>
+
+      <section class="top-fields">
+        <div>
+          <label class="field-line">Nom : <input data-field="nom" /></label>
+          <label class="field-line">Joueur : <input data-field="joueur" /></label>
+          <label class="field-line">Chronique : <input data-field="chronique" /></label>
+        </div>
+        <div>
+          <label class="field-line">Nature : <input data-field="nature" /></label>
+          <label class="field-line">Attitude : <input data-field="attitude" /></label>
+          <label class="field-line">Concept : <input data-field="concept" /></label>
+        </div>
+        <div>
+          <label class="field-line">Clan : <input data-field="clan" /></label>
+          <label class="field-line">Génération : <input data-field="generation" /></label>
+          <label class="field-line">Sire : <input data-field="sire" /></label>
+        </div>
+      </section>
+
+      <h2 class="section-title"><span>Attributs</span></h2>
+      <section class="columns-3">
+        <div class="subsection" data-group="attributes-physical">
+          <h3>Physiques</h3>
+          <div class="trait-row" data-trait="force"><span class="trait-name">Force</span><span class="line"></span><span class="dots" data-max="5"></span></div>
+          <div class="trait-row" data-trait="dexterite"><span class="trait-name">Dextérité</span><span class="line"></span><span class="dots" data-max="5"></span></div>
+          <div class="trait-row" data-trait="vigueur"><span class="trait-name">Vigueur</span><span class="line"></span><span class="dots" data-max="5"></span></div>
+        </div>
+        <div class="subsection" data-group="attributes-social">
+          <h3>Sociaux</h3>
+          <div class="trait-row" data-trait="charisme"><span class="trait-name">Charisme</span><span class="line"></span><span class="dots" data-max="5"></span></div>
+          <div class="trait-row" data-trait="manipulation"><span class="trait-name">Manipulation</span><span class="line"></span><span class="dots" data-max="5"></span></div>
+          <div class="trait-row" data-trait="apparence"><span class="trait-name">Apparence</span><span class="line"></span><span class="dots" data-max="5"></span></div>
+        </div>
+        <div class="subsection" data-group="attributes-mental">
+          <h3>Mentaux</h3>
+          <div class="trait-row" data-trait="perception"><span class="trait-name">Perception</span><span class="line"></span><span class="dots" data-max="5"></span></div>
+          <div class="trait-row" data-trait="intelligence"><span class="trait-name">Intelligence</span><span class="line"></span><span class="dots" data-max="5"></span></div>
+          <div class="trait-row" data-trait="astuce"><span class="trait-name">Astuce</span><span class="line"></span><span class="dots" data-max="5"></span></div>
+        </div>
+      </section>
+
+      <h2 class="section-title"><span>Capacités</span></h2>
+      <section class="columns-3">
+        <div class="subsection" data-group="talents">
+          <h3>Talents</h3>
+          <div class="trait-row ability-row" data-trait="athletisme"><span class="trait-name">Athlétisme</span><input class="specialty-input" data-field="spec_athletisme" placeholder="spécialité" /><span class="dots" data-max="5"></span></div>
+          <div class="trait-row ability-row" data-trait="bagarre"><span class="trait-name">Bagarre</span><input class="specialty-input" data-field="spec_bagarre" placeholder="spécialité" /><span class="dots" data-max="5"></span></div>
+          <div class="trait-row ability-row" data-trait="commandement"><span class="trait-name">Commandement</span><input class="specialty-input" data-field="spec_commandement" placeholder="spécialité" /><span class="dots" data-max="5"></span></div>
+          <div class="trait-row ability-row" data-trait="empathie"><span class="trait-name">Empathie</span><input class="specialty-input" data-field="spec_empathie" placeholder="spécialité" /><span class="dots" data-max="5"></span></div>
+          <div class="trait-row ability-row" data-trait="exp_rue"><span class="trait-name">Expérience de la rue</span><input class="specialty-input" data-field="spec_exp_rue" placeholder="spécialité" /><span class="dots" data-max="5"></span></div>
+          <div class="trait-row ability-row" data-trait="expression"><span class="trait-name">Expression</span><input class="specialty-input" data-field="spec_expression" placeholder="spécialité" /><span class="dots" data-max="5"></span></div>
+          <div class="trait-row ability-row" data-trait="intimidation"><span class="trait-name">Intimidation</span><input class="specialty-input" data-field="spec_intimidation" placeholder="spécialité" /><span class="dots" data-max="5"></span></div>
+          <div class="trait-row ability-row" data-trait="intuition"><span class="trait-name">Intuition</span><input class="specialty-input" data-field="spec_intuition" placeholder="spécialité" /><span class="dots" data-max="5"></span></div>
+          <div class="trait-row ability-row" data-trait="subterfuge"><span class="trait-name">Subterfuge</span><input class="specialty-input" data-field="spec_subterfuge" placeholder="spécialité" /><span class="dots" data-max="5"></span></div>
+          <div class="trait-row ability-row" data-trait="vigilance"><span class="trait-name">Vigilance</span><input class="specialty-input" data-field="spec_vigilance" placeholder="spécialité" /><span class="dots" data-max="5"></span></div>
+        </div>
+
+        <div class="subsection" data-group="skills">
+          <h3>Compétences</h3>
+          <div class="trait-row ability-row" data-trait="animaux"><span class="trait-name">Animaux</span><input class="specialty-input" data-field="spec_animaux" placeholder="spécialité" /><span class="dots" data-max="5"></span></div>
+          <div class="trait-row ability-row" data-trait="armes_a_feu"><span class="trait-name">Armes à feu</span><input class="specialty-input" data-field="spec_armes_a_feu" placeholder="spécialité" /><span class="dots" data-max="5"></span></div>
+          <div class="trait-row ability-row" data-trait="artisanats"><span class="trait-name">Artisanats</span><input class="specialty-input" data-field="spec_artisanats" placeholder="spécialité" /><span class="dots" data-max="5"></span></div>
+          <div class="trait-row ability-row" data-trait="conduite"><span class="trait-name">Conduite</span><input class="specialty-input" data-field="spec_conduite" placeholder="spécialité" /><span class="dots" data-max="5"></span></div>
+          <div class="trait-row ability-row" data-trait="etiquette"><span class="trait-name">Étiquette</span><input class="specialty-input" data-field="spec_etiquette" placeholder="spécialité" /><span class="dots" data-max="5"></span></div>
+          <div class="trait-row ability-row" data-trait="furtivite"><span class="trait-name">Furtivité</span><input class="specialty-input" data-field="spec_furtivite" placeholder="spécialité" /><span class="dots" data-max="5"></span></div>
+          <div class="trait-row ability-row" data-trait="larcin"><span class="trait-name">Larcin</span><input class="specialty-input" data-field="spec_larcin" placeholder="spécialité" /><span class="dots" data-max="5"></span></div>
+          <div class="trait-row ability-row" data-trait="melee"><span class="trait-name">Mêlée</span><input class="specialty-input" data-field="spec_melee" placeholder="spécialité" /><span class="dots" data-max="5"></span></div>
+          <div class="trait-row ability-row" data-trait="representation"><span class="trait-name">Représentation</span><input class="specialty-input" data-field="spec_representation" placeholder="spécialité" /><span class="dots" data-max="5"></span></div>
+          <div class="trait-row ability-row" data-trait="survie"><span class="trait-name">Survie</span><input class="specialty-input" data-field="spec_survie" placeholder="spécialité" /><span class="dots" data-max="5"></span></div>
+        </div>
+
+        <div class="subsection" data-group="knowledges">
+          <h3>Connaissances</h3>
+          <div class="trait-row ability-row" data-trait="droit"><span class="trait-name">Droit</span><input class="specialty-input" data-field="spec_droit" placeholder="spécialité" /><span class="dots" data-max="5"></span></div>
+          <div class="trait-row ability-row" data-trait="erudition"><span class="trait-name">Érudition</span><input class="specialty-input" data-field="spec_erudition" placeholder="spécialité" /><span class="dots" data-max="5"></span></div>
+          <div class="trait-row ability-row" data-trait="finances"><span class="trait-name">Finances</span><input class="specialty-input" data-field="spec_finances" placeholder="spécialité" /><span class="dots" data-max="5"></span></div>
+          <div class="trait-row ability-row" data-trait="informatique"><span class="trait-name">Informatique</span><input class="specialty-input" data-field="spec_informatique" placeholder="spécialité" /><span class="dots" data-max="5"></span></div>
+          <div class="trait-row ability-row" data-trait="investigation"><span class="trait-name">Investigation</span><input class="specialty-input" data-field="spec_investigation" placeholder="spécialité" /><span class="dots" data-max="5"></span></div>
+          <div class="trait-row ability-row" data-trait="medecine"><span class="trait-name">Médecine</span><input class="specialty-input" data-field="spec_medecine" placeholder="spécialité" /><span class="dots" data-max="5"></span></div>
+          <div class="trait-row ability-row" data-trait="occultisme"><span class="trait-name">Occultisme</span><input class="specialty-input" data-field="spec_occultisme" placeholder="spécialité" /><span class="dots" data-max="5"></span></div>
+          <div class="trait-row ability-row" data-trait="politique"><span class="trait-name">Politique</span><input class="specialty-input" data-field="spec_politique" placeholder="spécialité" /><span class="dots" data-max="5"></span></div>
+          <div class="trait-row ability-row" data-trait="sciences"><span class="trait-name">Sciences</span><input class="specialty-input" data-field="spec_sciences" placeholder="spécialité" /><span class="dots" data-max="5"></span></div>
+          <div class="trait-row ability-row" data-trait="technologie"><span class="trait-name">Technologie</span><input class="specialty-input" data-field="spec_technologie" placeholder="spécialité" /><span class="dots" data-max="5"></span></div>
+        </div>
+      </section>
+
+      <h2 class="section-title"><span>Avantages</span></h2>
+      <section class="advantages">
+        <div class="subsection" data-group="disciplines">
+          <h3>Disciplines</h3>
+
+          <div class="disciplines-grid">
+            <div>
+              <div class="free-row"><input data-field="discipline_1" /><span class="dots" data-key="discipline_1" data-max="5"></span></div>
+              <div class="free-row"><input data-field="discipline_2" /><span class="dots" data-key="discipline_2" data-max="5"></span></div>
+              <div class="free-row"><input data-field="discipline_3" /><span class="dots" data-key="discipline_3" data-max="5"></span></div>
+              <div class="free-row"><input data-field="discipline_4" /><span class="dots" data-key="discipline_4" data-max="5"></span></div>
+              <div class="free-row"><input data-field="discipline_5" /><span class="dots" data-key="discipline_5" data-max="5"></span></div>
+            </div>
+
+            <div>
+              <div class="free-row"><input data-field="discipline_6" /><span class="dots" data-key="discipline_6" data-max="5"></span></div>
+              <div class="free-row"><input data-field="discipline_7" /><span class="dots" data-key="discipline_7" data-max="5"></span></div>
+              <div class="free-row"><input data-field="discipline_8" /><span class="dots" data-key="discipline_8" data-max="5"></span></div>
+              <div class="free-row"><input data-field="discipline_9" /><span class="dots" data-key="discipline_9" data-max="5"></span></div>
+              <div class="free-row"><input data-field="discipline_10" /><span class="dots" data-key="discipline_10" data-max="5"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="subsection virtues-shift" data-group="virtues">
+          <h3>Vertus</h3>
+          <div class="trait-row" data-trait="conscience"><span class="trait-name">Conscience/Conviction</span><span class="line"></span><span class="dots" data-max="5"></span></div>
+          <div class="trait-row" data-trait="maitrise"><span class="trait-name">Maîtrise de soi/Instinct</span><span class="line"></span><span class="dots" data-max="5"></span></div>
+          <div class="trait-row" data-trait="courage"><span class="trait-name">Courage</span><span class="line"></span><span class="dots" data-max="5"></span></div>
+        </div>
+      </section>
+
+      <section class="lower">
+<div>
+          <div class="mini-title">Humanité / Voie</div>
+          <div class="tracker"><span class="dots" data-key="humanite" data-max="10"></span></div>
+          <label class="field-line">Comportement : <input data-field="comportement" /></label>
+
+          <div class="mini-title">Volonté</div>
+          <div class="tracker"><span class="dots" data-key="volonte" data-max="10"></span></div>
+          <div class="tracker"><span class="boxes" data-key="volonte_temp" data-max="10" data-reverse="true" data-cap-dots="volonte"></span></div>
+
+          <div class="mini-title">Réserve de sang</div>
+
+          <label class="field-line">
+            Sang maximum :
+            <input data-field="sang_maximum" />
+          </label>
+
+          <div class="tracker">
+            <div>Actuel</div>
+            <span class="boxes" data-key="sang_current" data-max="20" data-reverse="true" data-cap-field="sang_maximum"></span>
+          </div>
+
+          <label class="field-line">Points de sang par tour : <input data-field="sang_tour" /></label>
+        </div>
+
+        <div>
+          <div class="mini-title">Santé</div>
+          <div class="health-row"><span>Contusion</span><span></span><span class="box" data-key="sante_contusion"></span></div>
+          <div class="health-row"><span>Blessure légère</span><span>-1</span><span class="box" data-key="sante_legere"></span></div>
+          <div class="health-row"><span>Blessure moyenne</span><span>-1</span><span class="box" data-key="sante_moyenne"></span></div>
+          <div class="health-row"><span>Blessure grave</span><span>-2</span><span class="box" data-key="sante_grave"></span></div>
+          <div class="health-row"><span>Handicap</span><span>-2</span><span class="box" data-key="sante_handicap"></span></div>
+          <div class="health-row"><span>Infirmité</span><span>-5</span><span class="box" data-key="sante_infirmite"></span></div>
+          <div class="health-row"><span>Invalidité</span><span></span><span class="box" data-key="sante_invalidite"></span></div>
+
+          <div class="mini-title">Faiblesse</div>
+          <label class="field-line"><input data-field="faiblesse_clan" /></label>
+
+          <div class="mini-title">Expérience</div>
+          <label class="field-line"><input data-field="experience" /></label>
+        </div>
+      </section>
+    </div>
+    <div class="footer-note">Page 1 — fiche de jeu principale</div>
+  </main>
+
+  <main class="sheet page-two">
+    <div class="content">
+      <header>
+        <div class="anniversary">Édition 20e anniversaire</div>
+        <h1>VAMPIRE</h1>
+        <div class="subtitle">HISTORIQUES & DOMAINES</div>
+      </header>
+
+      <section class="top-fields">
+        <div>
+          <label class="field-line">Nom : <input data-field="nom" /></label>
+        </div>
+        <div>
+          <label class="field-line">Clan : <input data-field="clan" /></label>
+        </div>
+        <div>
+          <label class="field-line">Joueur : <input data-field="joueur" /></label>
+        </div>
+      </section>
+
+      <h2 class="section-title"><span>Atouts & Handicaps</span></h2>
+
+      <section class="columns-2">
+        <div>
+          <div class="mini-title">Atouts & Handicaps</div>
+          <div class="merit-header"><strong>Atout</strong><strong>Coût</strong></div>
+          <div class="merit-row"><input data-field="atout_1" /><input data-field="atout_cout_1" /></div>
+          <div class="merit-row"><input data-field="atout_2" /><input data-field="atout_cout_2" /></div>
+          <div class="merit-row"><input data-field="atout_3" /><input data-field="atout_cout_3" /></div>
+          <div class="merit-row"><input data-field="atout_4" /><input data-field="atout_cout_4" /></div>
+          <div class="merit-row"><input data-field="atout_5" /><input data-field="atout_cout_5" /></div>
+
+          <div class="merit-header" style="margin-top: 3mm;"><strong>Faiblesse</strong><strong>Coût</strong></div>
+          <div class="merit-row"><input data-field="handicap_1" /><input data-field="handicap_cout_1" /></div>
+          <div class="merit-row"><input data-field="handicap_2" /><input data-field="handicap_cout_2" /></div>
+          <div class="merit-row"><input data-field="handicap_3" /><input data-field="handicap_cout_3" /></div>
+          <div class="merit-row"><input data-field="handicap_4" /><input data-field="handicap_cout_4" /></div>
+        </div>
+
+        
+        <div>
+          <div class="mini-title">Notes d'avantages</div>
+          <section class="notes-area">
+            <textarea data-field="notes_atouts_handicaps" placeholder="Détails des atouts, handicaps, coûts, effets, conditions..."></textarea>
+          </section>
+        </div>
+      </section>
+
+      <h2 class="section-title"><span>Historiques</span></h2>
+
+      <section class="history-grid">
+        <div class="subsection">
+          <h3>Historiques généraux</h3>
+          <div class="free-row"><input data-field="historique_1" /><span class="dots" data-key="historique_1" data-max="5"></span></div>
+          <div class="free-row"><input data-field="historique_2" /><span class="dots" data-key="historique_2" data-max="5"></span></div>
+          <div class="free-row"><input data-field="historique_3" /><span class="dots" data-key="historique_3" data-max="5"></span></div>
+          <div class="free-row"><input data-field="historique_4" /><span class="dots" data-key="historique_4" data-max="5"></span></div>
+          <div class="free-row"><input data-field="historique_5" /><span class="dots" data-key="historique_5" data-max="5"></span></div>
+          <div class="free-row"><input data-field="historique_6" /><span class="dots" data-key="historique_6" data-max="5"></span></div>
+          <div class="free-row"><input data-field="historique_7" /><span class="dots" data-key="historique_7" data-max="5"></span></div>
+          <div class="free-row"><input data-field="historique_8" /><span class="dots" data-key="historique_8" data-max="5"></span></div>
+
+          <div class="ritual-block">
+            <div class="mini-title">Rituels</div>
+            <div class="ritual-row"><input data-field="rituel_1" placeholder="Nom du rituel" /><span class="dots" data-key="rituel_1" data-max="5"></span></div>
+            <div class="ritual-row"><input data-field="rituel_2" placeholder="Nom du rituel" /><span class="dots" data-key="rituel_2" data-max="5"></span></div>
+            <div class="ritual-row"><input data-field="rituel_3" placeholder="Nom du rituel" /><span class="dots" data-key="rituel_3" data-max="5"></span></div>
+            <div class="ritual-row"><input data-field="rituel_4" placeholder="Nom du rituel" /><span class="dots" data-key="rituel_4" data-max="5"></span></div>
+            <div class="ritual-row"><input data-field="rituel_5" placeholder="Nom du rituel" /><span class="dots" data-key="rituel_5" data-max="5"></span></div>
+            <div class="ritual-row"><input data-field="rituel_6" placeholder="Nom du rituel" /><span class="dots" data-key="rituel_6" data-max="5"></span></div>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>Domaines détaillés</h3>
+
+          <div class="domain-card">
+            <div class="domain-title-row">
+              <input data-field="domaine_1" placeholder="Domaine / historique" />
+            </div>
+            <div class="domain-sub-row"><span>•</span><input data-field="domaine_1_detail_1" placeholder="Sous-historique / aspect" /><span class="dots" data-key="domaine_1_detail_1" data-max="5"></span></div>
+            <div class="domain-sub-row"><span>•</span><input data-field="domaine_1_detail_2" /><span class="dots" data-key="domaine_1_detail_2" data-max="5"></span></div>
+            <div class="domain-sub-row"><span>•</span><input data-field="domaine_1_detail_3" /><span class="dots" data-key="domaine_1_detail_3" data-max="5"></span></div>
+            <div class="domain-sub-row"><span>•</span><input data-field="domaine_1_detail_4" /><span class="dots" data-key="domaine_1_detail_4" data-max="5"></span></div>
+            <div class="domain-sub-row"><span>•</span><input data-field="domaine_1_detail_5" /><span class="dots" data-key="domaine_1_detail_5" data-max="5"></span></div>
+          </div>
+
+          <div class="domain-card">
+            <div class="domain-title-row">
+              <input data-field="domaine_2" placeholder="Domaine / historique" />
+            </div>
+            <div class="domain-sub-row"><span>•</span><input data-field="domaine_2_detail_1" placeholder="Sous-historique / aspect" /><span class="dots" data-key="domaine_2_detail_1" data-max="5"></span></div>
+            <div class="domain-sub-row"><span>•</span><input data-field="domaine_2_detail_2" /><span class="dots" data-key="domaine_2_detail_2" data-max="5"></span></div>
+            <div class="domain-sub-row"><span>•</span><input data-field="domaine_2_detail_3" /><span class="dots" data-key="domaine_2_detail_3" data-max="5"></span></div>
+            <div class="domain-sub-row"><span>•</span><input data-field="domaine_2_detail_4" /><span class="dots" data-key="domaine_2_detail_4" data-max="5"></span></div>
+            <div class="domain-sub-row"><span>•</span><input data-field="domaine_2_detail_5" /><span class="dots" data-key="domaine_2_detail_5" data-max="5"></span></div>
+          </div>
+        </div>
+      </section>
+
+      <h2 class="section-title"><span>Notes</span></h2>
+      <section class="notes-area">
+        <textarea data-field="notes_historiques" placeholder="Notes, détails de domaine, contacts, ressources, territoires, dettes, relations..."></textarea>
+      </section>
+    </div>
+
+    <div class="footer-note">Page 2 — historiques, domaines, rituels, atouts et handicaps</div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script>
+    const SUPABASE_URL = "https://tthiqzxxpiiebdmnnnik.supabase.co";
+    const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_vrUgI0qR9cwHFJ74QZbnEQ_GKo7GSGj";
+
+    const client = supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
+
+    const params = new URLSearchParams(window.location.search);
+    let currentCharacterId = params.get("id");
+
+    const STORAGE_KEY = "vampire-v20-sheet-v1";
+    const state = { fields: {}, dots: {}, boxes: {} };
+
+    function makeDots(container, type = "dots") {
+      const max = Number(container.dataset.max || 5);
+      const key = getTrackerKey(container);
+      container.innerHTML = "";
+
+      for (let i = 1; i <= max; i++) {
+        const item = document.createElement("span");
+        item.className = type === "boxes" ? "box" : "dot";
+        item.dataset.value = String(i);
+        item.addEventListener("click", () => {
+          const current = Number(state[type][key] || 0);
+          const reverse = container.dataset.reverse === "true";
+          let selectedValue = reverse ? max - i + 1 : i;
+          let minimumChecked = 0;
+
+          if (container.dataset.capField) {
+            const maxBlood = Math.max(0, Math.min(max, Number(state.fields[container.dataset.capField] || max)));
+            minimumChecked = max - maxBlood;
+          }
+
+          if (container.dataset.capDots) {
+            const maxDots = Math.max(0, Math.min(max, Number(state.dots[container.dataset.capDots] || 0)));
+            minimumChecked = max - maxDots;
+          }
+
+          if (minimumChecked > 0) {
+            if (selectedValue < minimumChecked) {
+              selectedValue = minimumChecked;
+            }
+
+            state[type][key] = current === selectedValue
+              ? minimumChecked
+              : selectedValue;
+          } else {
+            state[type][key] = current === selectedValue ? 0 : selectedValue;
+          }
+
+          renderTrackers();
+          saveLocal();
+        });
+        container.appendChild(item);
+      }
+    }
+
+    function getTrackerKey(container) {
+      if (container.dataset.key) return container.dataset.key;
+      const trait = container.closest("[data-trait]");
+      const group = container.closest("[data-group]");
+      return `${group?.dataset.group || "global"}.${trait?.dataset.trait || "unknown"}`;
+    }
+
+    function renderTrackers() {
+      document.querySelectorAll(".dots").forEach(container => {
+        const key = getTrackerKey(container);
+        const value = Number(state.dots[key] || 0);
+        container.querySelectorAll(".dot").forEach(dot => {
+          dot.classList.toggle("filled", Number(dot.dataset.value) <= value);
+        });
+      });
+
+      document.querySelectorAll(".boxes").forEach(container => {
+        const key = getTrackerKey(container);
+        let value = Number(state.boxes[key] || 0);
+        const reverse = container.dataset.reverse === "true";
+        const max = Number(container.dataset.max || container.querySelectorAll(".box").length);
+
+        let minimumChecked = 0;
+
+        if (container.dataset.capField) {
+          const maxBlood = Math.max(0, Math.min(max, Number(state.fields[container.dataset.capField] || max)));
+
+          // Sang :
+          // cases cochées = sang manquant / dépensé
+          // cases non cochées = sang disponible
+          minimumChecked = max - maxBlood;
+        }
+
+        if (container.dataset.capDots) {
+          const maxDots = Math.max(0, Math.min(max, Number(state.dots[container.dataset.capDots] || 0)));
+
+          // Volonté :
+          // points ronds = maximum permanent
+          // cases cochées/grisées = volonté indisponible
+          minimumChecked = max - maxDots;
+        }
+
+        if (value < minimumChecked) {
+          value = minimumChecked;
+          state.boxes[key] = minimumChecked;
+        }
+
+        container.querySelectorAll(".box").forEach(box => {
+          const index = Number(box.dataset.value);
+
+          const shouldFill = reverse
+            ? index > max - value
+            : index <= value;
+
+          const locked = reverse
+            ? index > max - minimumChecked
+            : index <= minimumChecked;
+
+          box.classList.toggle("filled", shouldFill || locked);
+          box.classList.toggle("locked", locked);
+        });
+      });
+
+      document.querySelectorAll(".box[data-key]").forEach(box => {
+        box.classList.toggle("filled", Boolean(state.boxes[box.dataset.key]));
+      });
+    }
+
+    function collectFields() {
+      document.querySelectorAll("[data-field]").forEach(input => {
+        state.fields[input.dataset.field] = input.value;
+      });
+    }
+
+    function renderFields() {
+      document.querySelectorAll("[data-field]").forEach(input => {
+        input.value = state.fields[input.dataset.field] || "";
+      });
+    }
+
+    function saveLocal() {
+      collectFields();
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    async function save() {
+      collectFields();
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+
+      const {
+        data: { user }
+      } = await client.auth.getUser();
+
+      if (!user) {
+        alert("Tu dois être connecté pour sauvegarder en base.");
+        window.location.href = "auth_supabase_vampire.html";
+        return;
+      }
+
+      const payload = {
+        owner_id: user.id,
+        name: state.fields.nom || "Sans nom",
+        clan: state.fields.clan || null,
+        generation: state.fields.generation || null,
+        sire: state.fields.sire || null,
+        data: state,
+        updated_at: new Date().toISOString()
+      };
+
+      let result;
+
+      if (currentCharacterId) {
+        result = await client
+          .from("characters")
+          .update(payload)
+          .eq("id", currentCharacterId)
+          .select("id")
+          .single();
+      } else {
+        result = await client
+          .from("characters")
+          .insert(payload)
+          .select("id")
+          .single();
+      }
+
+      if (result.error) {
+        alert("Erreur de sauvegarde : " + result.error.message);
+        return;
+      }
+
+      currentCharacterId = result.data.id;
+      window.history.replaceState({}, "", `?id=${currentCharacterId}`);
+
+      alert("Fiche sauvegardée en base.");
+    }
+
+    function applyState(data) {
+      state.fields = data.fields || {};
+      state.dots = data.dots || {};
+      state.boxes = data.boxes || {};
+
+      // Compatibilité anciennes fiches
+      if (state.boxes.sang && !state.fields.sang_maximum) {
+        state.fields.sang_maximum = state.boxes.sang;
+      }
+
+      if (state.boxes.sang && !state.boxes.sang_current) {
+        state.boxes.sang_current = state.boxes.sang;
+      }
+
+      if ((state.boxes.sang_current_top || state.boxes.sang_current_bottom) && !state.boxes.sang_current) {
+        state.boxes.sang_current =
+          Number(state.boxes.sang_current_top || 0) +
+          Number(state.boxes.sang_current_bottom || 0);
+      }
+
+      renderFields();
+      renderTrackers();
+    }
+
+    function load() {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      try {
+        applyState(JSON.parse(raw));
+      } catch (error) {
+        alert("Impossible de charger la sauvegarde locale.");
+      }
+    }
+
+    async function loadFromDatabase() {
+      const {
+        data: { user }
+      } = await client.auth.getUser();
+
+      if (!user) {
+        window.location.href = "auth_supabase_vampire.html";
+        return;
+      }
+
+      if (!currentCharacterId) {
+        state.fields = {};
+        state.dots = {};
+        state.boxes = {};
+        localStorage.removeItem(STORAGE_KEY);
+        renderFields();
+        renderTrackers();
+        return;
+      }
+
+      const { data, error } = await client
+        .from("characters")
+        .select("data")
+        .eq("id", currentCharacterId)
+        .single();
+
+      if (error) {
+        alert("Impossible de charger cette fiche : " + error.message);
+        return;
+      }
+
+      applyState(data.data || {});
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+
+      const query = new URLSearchParams(window.location.search);
+      if (query.get("download") === "1") {
+        setTimeout(downloadPdf, 600);
+      }
+      if (query.get("print") === "1") {
+        setTimeout(() => window.print(), 600);
+      }
+    }
+
+    function getSafeFileName() {
+      return (state.fields.nom || "fiche-vampire-v20")
+        .replace(/[^a-z0-9_-]+/gi, "_")
+        .replace(/^_+|_+$/g, "") || "fiche-vampire-v20";
+    }
+
+    async function downloadPdf() {
+      const toolbar = document.querySelector(".toolbar");
+      if (toolbar) toolbar.style.display = "none";
+
+      const element = document.querySelector(".sheet");
+      const options = {
+        margin: 0,
+        filename: `${getSafeFileName()}.pdf`,
+        image: { type: "jpeg", quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true },
+        jsPDF: { unit: "mm", format: "a4", orientation: "portrait" }
+      };
+
+      try {
+        await html2pdf().set(options).from(element).save();
+      } finally {
+        if (toolbar) toolbar.style.display = "";
+      }
+    }
+
+    function exportJson() {
+      saveLocal();
+      const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      const name = state.fields.nom ? state.fields.nom.replace(/[^a-z0-9_-]+/gi, "_") : "fiche-vampire-v20";
+      a.href = url;
+      a.download = `${name}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function importJson(file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          const data = JSON.parse(reader.result);
+          state.fields = data.fields || {};
+          state.dots = data.dots || {};
+          state.boxes = data.boxes || {};
+          renderFields();
+          renderTrackers();
+          saveLocal();
+        } catch (error) {
+          alert("Fichier JSON invalide.");
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    document.querySelectorAll(".dots").forEach(container => makeDots(container, "dots"));
+    document.querySelectorAll(".boxes").forEach(container => makeDots(container, "boxes"));
+
+    document.querySelectorAll(".box[data-key]").forEach(box => {
+      box.addEventListener("click", () => {
+        state.boxes[box.dataset.key] = state.boxes[box.dataset.key] ? 0 : 1;
+        renderTrackers();
+        saveLocal();
+      });
+    });
+
+    document.querySelectorAll("[data-field]").forEach(input => {
+      input.addEventListener("input", () => {
+        collectFields();
+
+        if (input.dataset.field === "sang_maximum") {
+          const maxBlood = Math.max(0, Math.min(20, Number(state.fields.sang_maximum || 20)));
+          const minimumChecked = 20 - maxBlood;
+
+          if (Number(state.boxes.sang_current || 0) < minimumChecked) {
+            state.boxes.sang_current = minimumChecked;
+          }
+
+          renderTrackers();
+        }
+
+        saveLocal();
+      });
+    });
+
+    const saveBtn = document.getElementById("saveBtn");
+    if (saveBtn) {
+      saveBtn.addEventListener("click", save);
+    }
+
+    const loadBtn = document.getElementById("loadBtn");
+    if (loadBtn) {
+      loadBtn.addEventListener("click", load);
+    }
+
+    const exportJsonBtn = document.getElementById("exportJsonBtn");
+    if (exportJsonBtn) {
+      exportJsonBtn.addEventListener("click", exportJson);
+    }
+
+    const importJsonInput = document.getElementById("importJsonInput");
+    if (importJsonInput) {
+      importJsonInput.addEventListener("change", event => {
+        const file = event.target.files[0];
+        if (file) importJson(file);
+        event.target.value = "";
+      });
+    }
+
+    const resetBtn = document.getElementById("resetBtn");
+    if (resetBtn) {
+      resetBtn.addEventListener("click", () => {
+        if (!confirm("Vider la fiche actuelle ?")) return;
+        state.fields = {};
+        state.dots = {};
+        state.boxes = {};
+        localStorage.removeItem(STORAGE_KEY);
+        renderFields();
+        renderTrackers();
+      });
+    }
+
+    loadFromDatabase();
+  </script>
+</body>
+</html>
