@@ -914,8 +914,22 @@
     }
 
     function collectFields() {
+      const groupedFields = {};
+
       document.querySelectorAll("[data-field]").forEach(input => {
-        state.fields[input.dataset.field] = input.value;
+        const key = input.dataset.field;
+
+        if (!groupedFields[key]) {
+          groupedFields[key] = [];
+        }
+
+        groupedFields[key].push(input.value);
+      });
+
+      Object.entries(groupedFields).forEach(([key, values]) => {
+        const filledValue = values.find(value => value.trim() !== "");
+
+        state.fields[key] = filledValue || "";
       });
     }
 
@@ -1128,9 +1142,19 @@
 
     document.querySelectorAll("[data-field]").forEach(input => {
       input.addEventListener("input", () => {
+        const fieldName = input.dataset.field;
+
+        document
+          .querySelectorAll(`[data-field="${fieldName}"]`)
+          .forEach(otherInput => {
+            if (otherInput !== input) {
+              otherInput.value = input.value;
+            }
+          });
+
         collectFields();
 
-        if (input.dataset.field === "sang_maximum") {
+        if (fieldName === "sang_maximum") {
           const maxBlood = Math.max(0, Math.min(20, Number(state.fields.sang_maximum || 20)));
           const minimumChecked = 20 - maxBlood;
 
