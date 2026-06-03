@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" type="image/png" href="icon.png">
   <link rel="stylesheet" href="style.css">
-  <title>Dashboard - Vampire V20</title>
+  <title>Compagnon - Vampire V20</title>
 
 </head>
 <body>
@@ -34,7 +34,7 @@
 
     <main>
       <div class="topbar">
-        <h2>Dashboard</h2>
+        <h2>Tableau de bord</h2>
 
         <div class="user-box">
           <img id="avatar" src="" alt="Avatar Discord">
@@ -46,19 +46,31 @@
         </div>
       </div>
 
-      <div class="content-panel">
+     <!-- <div class="content-panel">
         <section class="section active" id="homeSection">
           <h3>Bienvenue</h3>
           <p class="placeholder">
           
           </p>
         </section>
-
-        <section class="section" id="myCharactersSection">
+        -->
+        <section class="section active" id="myCharactersSection">
           <h3>Mes fiches</h3>
 
           <div class="card-grid" id="myCharactersContainer">
             <p class="placeholder">Aucune fiche chargée.</p>
+          </div>
+        </section>
+
+         <section class="section" id="playerCharactersSection">
+          <h3>Fiches joueurs</h3>
+
+          <p class="placeholder">
+            Visible seulement pour les MJ. Cette section affiche les fiches créées par les autres joueurs.
+          </p>
+
+          <div class="card-grid" id="playerCharactersContainer">
+            <p class="placeholder">Aucune fiche joueur chargée.</p>
           </div>
         </section>
 
@@ -74,17 +86,6 @@
           </button>
         </section>
 
-        <section class="section" id="playerCharactersSection">
-          <h3>Fiches joueurs</h3>
-
-          <p class="placeholder">
-            Visible seulement pour les MJ. Cette section affiche les fiches créées par les autres joueurs.
-          </p>
-
-          <div class="card-grid" id="playerCharactersContainer">
-            <p class="placeholder">Aucune fiche joueur chargée.</p>
-          </div>
-        </section>
         <section class="section" id="disciplineSection">
           <h3>Disciplines</h3>
 
