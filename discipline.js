@@ -183,7 +183,7 @@ const DISCIPLINES = {
           "Le vampire agit avec une rapidité fulgurante, capable d’effectuer plusieurs actions physiques supplémentaires dans le même tour sans subir les pénalités habituelles des actions multiples.",
 
         systeme:
-          "Le vampire dépense un point de sang pour gagner, un nombre d’actions physiques ou de dés supplémentaires égal à son score de Célérité. ( exemple avec 4 en célérité le vampire peut faire au maximum 5 actions mais il peut aussi faire 2 action suplémentaire, donc 3, et avoir +2 dés a chacune de ces actions, ou alors faire une action avec 4 dés en plus)"
+          "Le vampire dépense un point de sang pour obtenir un nombre d’actions physiques supplémentaires ou de dés bonus égal à son score de Célérité. Par exemple, avec Célérité 4, un vampire peut effectuer jusqu’à 5 actions au total dans le tour. Il peut également choisir de n’utiliser qu’une partie de cette vitesse surnaturelle : effectuer 3 actions avec +2 dés sur chacune, ou simplement réaliser une seule action avec +4 dés."
       }
     ]
   },
