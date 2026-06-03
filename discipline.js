@@ -14,7 +14,7 @@ const DISCIPLINES = {
           "Le vampire amplifie ou atténue une émotion déjà présente chez sa cible.",
 
         systeme:
-          "Jet conseillé : Charisme + Empathie. La durée dépend des réussites."
+          "Jet : Charisme + Empathie. La durée dépend des réussites."
       },
 
       {
@@ -25,7 +25,7 @@ const DISCIPLINES = {
           "La victime subit des hallucinations ou perceptions troublantes affectant un ou plusieurs sens.",
 
         systeme:
-          "Jet conseillé : Manipulation + Subterfuge après dépense de sang."
+          "1 point de sang et Jet : Manipulation + Subterfuge."
       },
 
       {
@@ -36,7 +36,7 @@ const DISCIPLINES = {
           "Le vampire perçoit des motifs cachés, des vérités dissimulées ou la nature profonde d'un individu.",
 
         systeme:
-          "Jet conseillé : Perception + Occultisme."
+          "Jet : Perception + Occultisme."
       },
 
       {
@@ -47,7 +47,7 @@ const DISCIPLINES = {
           "La voix du vampire déclenche panique, frénésie ou terreur incontrôlable.",
 
         systeme:
-          "Jet conseillé : Manipulation + Empathie après dépense de sang."
+          "1 point de sang Jet: Manipulation + Empathie."
       },
 
       {
@@ -58,7 +58,7 @@ const DISCIPLINES = {
           "Le vampire plonge la victime dans une crise profonde de folie surnaturelle.",
 
         systeme:
-          "Jet conseillé : Manipulation + Intimidation après dépense de sang."
+          "1 point de sang la vampire doit garder l'attention sur lui pendant 1 tour Jet: Manipulation + Intimidation."
       }
     ]
   },
@@ -84,7 +84,7 @@ const DISCIPLINES = {
         description:
           "Le vampire pousse un cri mystique imitant une espèce animale précise, attirant les représentants de cette espèce qui peuvent l’entendre.",
         systeme:
-          "Jet conseillé : Charisme + Survie. Les réussites déterminent combien d’animaux répondent à l’appel."
+          "Jet: Charisme + Survie. Les réussites déterminent combien d’animaux répondent à l’appel."
       },
 
       {
@@ -93,7 +93,7 @@ const DISCIPLINES = {
         description:
           "Le vampire apaise ou écrase la Bête intérieure d’un mortel ou d’un animal, plongeant la cible dans l’apathie, la peur ou une docilité surnaturelle.",
         systeme:
-          "Jet conseillé : Manipulation + Intimidation ou Manipulation + Empathie. Il faut accumuler assez de réussites pour soumettre la volonté de la cible."
+          "Jet: Manipulation + Intimidation ou Manipulation + Empathie. Il faut accumuler assez de réussites pour soumettre la volonté de la cible."
       },
 
       {
@@ -102,7 +102,7 @@ const DISCIPLINES = {
         description:
           "Le vampire projette sa conscience dans le corps d’un animal et en prend le contrôle, laissant son propre corps immobile.",
         systeme:
-          "Jet conseillé : Manipulation + Animaux. Les réussites déterminent le degré de contrôle et les disciplines mentales utilisables pendant la possession."
+          "Jet: Manipulation + Animaux. Les réussites déterminent le degré de contrôle et les disciplines mentales utilisables pendant la possession."
       },
 
       {
@@ -111,7 +111,7 @@ const DISCIPLINES = {
         description:
           "Le vampire transfère sa frénésie ou sa Bête intérieure dans une autre créature visible, qui devient alors le réceptacle de cette rage surnaturelle.",
         systeme:
-          "Jet conseillé : Manipulation + Maîtrise de soi. En cas d’échec, la frénésie empire ; en cas d’échec critique, les conséquences peuvent être graves."
+          "Jet: Manipulation + Maîtrise de soi. En cas d’échec, la frénésie empire ; en cas d’échec critique, les conséquences peuvent être graves."
       }
     ]
   },
@@ -137,7 +137,7 @@ const DISCIPLINES = {
         description:
           "Le vampire observe l’aura d’une personne ou d’une créature, révélant émotions dominantes, nature surnaturelle ou changements subtils d’état intérieur.",
         systeme:
-          "Jet conseillé : Perception + Empathie. Les réussites déterminent la précision de la lecture."
+          "Jet: Perception + Empathie. Les réussites déterminent la précision de la lecture."
       },
 
       {
@@ -146,7 +146,7 @@ const DISCIPLINES = {
         description:
           "En touchant un objet, le vampire lit les impressions psychiques laissées par ceux qui l’ont manipulé ou par les événements marquants liés à l’objet.",
         systeme:
-          "Jet conseillé : Perception + Empathie. La difficulté dépend de l’ancienneté et de l’intensité émotionnelle de l’empreinte."
+          "Jet: Perception + Empathie. La difficulté dépend de l’ancienneté et de l’intensité émotionnelle de l’empreinte."
       },
 
       {
@@ -155,7 +155,7 @@ const DISCIPLINES = {
         description:
           "Le vampire projette sa conscience vers l’esprit d’une cible proche afin de communiquer mentalement ou de lire ses pensées.",
         systeme:
-          "Jet conseillé : Intelligence + Subterfuge contre la Volonté de la cible. Les secrets profonds demandent davantage de réussites."
+          "Jet: Intelligence + Subterfuge contre la Volonté de la cible. Les secrets profonds demandent davantage de réussites."
       },
 
       {
@@ -164,7 +164,7 @@ const DISCIPLINES = {
         description:
           "Le vampire sépare sa conscience de son corps et voyage sous forme astrale, laissant son corps physique inerte.",
         systeme:
-          "Dépense de Volonté puis jet conseillé : Perception + Occultisme. La difficulté dépend de la distance et de la complexité du voyage."
+          "Dépense de Volonté puis jet: Perception + Occultisme. La difficulté dépend de la distance et de la complexité du voyage."
       }
     ]
   },
@@ -183,7 +183,7 @@ const DISCIPLINES = {
           "Le vampire agit avec une rapidité fulgurante, capable d’effectuer plusieurs actions physiques supplémentaires dans le même tour sans subir les pénalités habituelles des actions multiples.",
 
         systeme:
-          "Le vampire dépense un point de sang pour gagner, au tour suivant, un nombre d’actions physiques supplémentaires égal à son score de Célérité."
+          "Le vampire dépense un point de sang pour gagner, un nombre d’actions physiques ou de dés supplémentaires égal à son score de Célérité. ( exemple avec 4 en célérité le vampire peut faire au maximum 5 actions mais il peut aussi faire 2 action suplémentaire, donc 3, et avoir +2 dés a chacune de ces actions, ou alors faire une action avec 4 dés en plus)"
       }
     ]
   },
@@ -246,7 +246,7 @@ const DISCIPLINES = {
           "Le vampire projette directement des hallucinations dans l’esprit d’une victime, capables de provoquer douleurs, blessures ou terreur bien réelles pour elle.",
 
         systeme:
-          "Coûte deux points de Volonté. Jet conseillé : Manipulation + Subterfuge contre la résistance mentale de la cible."
+          "Coûte deux points de Volonté. Jet: Manipulation + Subterfuge contre la résistance mentale de la cible."
       }
     ]
   },
@@ -263,7 +263,7 @@ const DISCIPLINES = {
         description:
           "Le Baali perçoit les failles morales, les faiblesses spirituelles ou les ténèbres intérieures d'une cible.",
         systeme:
-          "Jet conseillé : Perception + Subterfuge contre la résistance mentale de la cible. Peut aussi être utilisé sur soi pour faciliter les usages de Daimonion."
+          "Jet: Perception + Subterfuge contre la résistance mentale de la cible. Peut aussi être utilisé sur soi pour faciliter les usages de Daimonion."
       },
       {
         niveau: "••",
@@ -279,7 +279,7 @@ const DISCIPLINES = {
         description:
           "Le Baali invoque un démon mineur capable d'accomplir des tâches simples comme espionner, harceler ou servir.",
         systeme:
-          "Jet conseillé : Astuce + Occultisme, difficulté élevée. Les réussites déterminent la puissance et l'intelligence de la créature."
+          "Jet: Astuce + Occultisme, difficulté élevée. Les réussites déterminent la puissance et l'intelligence de la créature."
       },
       {
         niveau: "••••",
@@ -287,7 +287,7 @@ const DISCIPLINES = {
         description:
           "Le Baali peut appeler et tenter de lier un démon plus puissant, mais ces créatures ne sont pas forcément dociles.",
         systeme:
-          "Rituel long. Jet conseillé : Astuce + Occultisme. Un échec critique peut attirer une entité hostile."
+          "Rituel long. Jet: Astuce + Occultisme. Un échec critique peut attirer une entité hostile."
       },
       {
         niveau: "•••••",
@@ -295,7 +295,7 @@ const DISCIPLINES = {
         description:
           "Le Baali invoque un démon nommé et dangereux, capable d'accomplir une tâche importante ou de servir de mentor infernal.",
         systeme:
-          "Rituel très long avec sacrifice de sang. Jet conseillé : Astuce + Occultisme. Un échec critique peut avoir des conséquences catastrophiques."
+          "Rituel très long avec sacrifice de sang. Jet: Astuce + Occultisme. Un échec critique peut avoir des conséquences catastrophiques."
       }
     ]
   },
@@ -314,7 +314,7 @@ const DISCIPLINES = {
           "Le vampire impose un ordre bref et immédiat à sa cible, généralement en un ou deux mots.",
 
         systeme:
-          "Jet conseillé : Manipulation + Intimidation contre la Volonté permanente de la cible. L’ordre doit être clair et ne peut pas pousser directement la cible à se détruire."
+          "Jet: Manipulation + Intimidation contre la Volonté permanente de la cible. L’ordre doit être clair et ne peut pas pousser directement la cible à se détruire."
       },
 
       {
@@ -325,7 +325,7 @@ const DISCIPLINES = {
           "Le vampire implante une suggestion ou une idée dans le subconscient de la cible, qui pourra s’activer immédiatement ou plus tard selon les conditions établies.",
 
         systeme:
-          "Jet conseillé : Manipulation + Commandement contre la Volonté permanente de la cible. Les réussites déterminent la force et la complexité de la suggestion."
+          "Jet: Manipulation + Commandement contre la Volonté permanente de la cible. Les réussites déterminent la force et la complexité de la suggestion."
       },
 
       {
@@ -336,7 +336,7 @@ const DISCIPLINES = {
           "Le vampire altère, efface ou reconstruit les souvenirs d’une cible, depuis un simple oubli jusqu’à une réécriture plus profonde de la mémoire.",
 
         systeme:
-          "Jet conseillé : Astuce + Subterfuge contre la Volonté de la cible. Les réussites déterminent l’ampleur des souvenirs pouvant être modifiés."
+          "Jet: Astuce + Subterfuge contre la Volonté de la cible. Les réussites déterminent l’ampleur des souvenirs pouvant être modifiés."
       },
 
       {
@@ -347,7 +347,7 @@ const DISCIPLINES = {
           "Par une influence répétée, le vampire rend une cible mortelle de plus en plus soumise à sa volonté et résistante aux tentatives de contrôle d’autres vampires.",
 
         systeme:
-          "Jet conseillé : Charisme + Commandement contre la Volonté permanente de la cible. C’est une action étendue demandant de nombreuses réussites sur une longue période."
+          "Jet: Charisme + Commandement contre la Volonté permanente de la cible. C’est une action étendue demandant de nombreuses réussites sur une longue période."
       },
 
       {
@@ -400,7 +400,7 @@ const DISCIPLINES = {
             description:
               "Le nécromant voit les derniers instants d’un cadavre à travers ses yeux.",
             systeme:
-              "Jet conseillé : Perception + Occultisme."
+              "Jet: Perception + Occultisme."
           },
 
           {
@@ -409,7 +409,7 @@ const DISCIPLINES = {
             description:
               "Le vampire invoque un fantôme afin de communiquer avec lui.",
             systeme:
-              "Jet conseillé : Perception + Occultisme."
+              "Jet: Perception + Occultisme."
           },
 
           {
@@ -418,7 +418,7 @@ const DISCIPLINES = {
             description:
               "Le nécromant force un revenant à obéir à ses ordres.",
             systeme:
-              "Jet conseillé : Manipulation + Occultisme."
+              "Jet: Manipulation + Occultisme."
           },
 
           {
@@ -427,7 +427,7 @@ const DISCIPLINES = {
             description:
               "Le vampire lie un fantôme à un lieu ou un objet.",
             systeme:
-              "Jet conseillé : Manipulation + Occultisme."
+              "Jet: Manipulation + Occultisme."
           },
 
           {
@@ -436,7 +436,7 @@ const DISCIPLINES = {
             description:
               "Le nécromant peut blesser directement les fantômes.",
             systeme:
-              "Jet conseillé : Vigueur + Empathie."
+              "Jet: Vigueur + Empathie."
           }
         ]
       },
@@ -455,7 +455,7 @@ const DISCIPLINES = {
             description:
               "Le vampire anime brièvement un cadavre.",
             systeme:
-              "Jet conseillé : Dextérité + Occultisme."
+              "Jet: Dextérité + Occultisme."
           },
 
           {
@@ -464,7 +464,7 @@ const DISCIPLINES = {
             description:
               "Le nécromant relève des cadavres pour accomplir des tâches simples.",
             systeme:
-              "Jet conseillé : Astuce + Occultisme."
+              "Jet: Astuce + Occultisme."
           },
 
           {
@@ -473,7 +473,7 @@ const DISCIPLINES = {
             description:
               "Le vampire anime des zombis capables d’attaquer.",
             systeme:
-              "Jet conseillé : Astuce + Occultisme."
+              "Jet: Astuce + Occultisme."
           },
 
           {
@@ -510,7 +510,7 @@ const DISCIPLINES = {
             description:
               "Le vampire voit les fantômes et le monde des morts.",
             systeme:
-              "Jet conseillé : Perception + Vigilance."
+              "Jet: Perception + Vigilance."
           },
 
           {
@@ -519,7 +519,7 @@ const DISCIPLINES = {
             description:
               "Le vampire peut converser librement avec les morts.",
             systeme:
-              "Jet conseillé : Perception + Occultisme."
+              "Jet: Perception + Occultisme."
           },
 
           {
@@ -528,7 +528,7 @@ const DISCIPLINES = {
             description:
               "Le vampire peut manipuler les objets et créatures fantomatiques.",
             systeme:
-              "Jet conseillé : Astuce + Occultisme."
+              "Jet: Astuce + Occultisme."
           },
 
           {
@@ -537,7 +537,7 @@ const DISCIPLINES = {
             description:
               "Le vampire entre physiquement dans le monde des morts.",
             systeme:
-              "Jet conseillé : Vigueur + Occultisme."
+              "Jet: Vigueur + Occultisme."
           },
 
           {
@@ -622,7 +622,7 @@ const DISCIPLINES = {
           "le vampire sent la vitalité d'un sujet en le touchant et donc savoir combien de niveaux de santé il a ou qui lui reste mais aussi la nature et l'état de son sang",
 
         systeme:
-          "Jet conseillé : jet de Perception + Empathie ( difficulté 7)"
+          "Jet: jet de Perception + Empathie ( difficulté 7)"
       },
 
       {
@@ -633,7 +633,7 @@ const DISCIPLINES = {
           "Ce pouvori bloque la douleur ou plonge dans un sommeil apaisant d'un simple toucher",
 
         systeme:
-          "Jet conseillé :  Volonté ( difficulté 6 ou 8 si non consentant) + 1 point de sang"
+          " 1 point de sang et Jet:  Volonté ( difficulté 6 ou 8 si non consentant)"
       },
 
       {
@@ -644,7 +644,7 @@ const DISCIPLINES = {
           "le salunien peux soigner les plaie et blessures ave cune imposition des mains",
 
         systeme:
-          "chaque niveau de santé soigné demande un  point de sng et 1 tour, pour les blessure aggravé il doit  dépenser 2 point de sang"
+          "chaque niveau de santé soigné demande 1 point de sang et 1 tour, pour les blessure aggravé il doit  dépenser 2 point de sang"
       },
 
       {
@@ -666,7 +666,7 @@ const DISCIPLINES = {
           "Le vampire peut guérir la folie calmer les démons intérieur et apaiser les ames",
 
         systeme:
-          "jet conseillé : 2 point de sang et  Intelligence + empathie ( difficulté 8)"
+          "2 point de sang et  Jet: Intelligence + empathie ( difficulté 8)"
       }
     ]
   },
@@ -696,7 +696,7 @@ const DISCIPLINES = {
           "Le vampire crée un nuage de ténèbres surnaturelles qui engloutit lumière et sons, plongeant les victimes dans une obscurité totale.",
 
         systeme:
-          "Jet conseillé : Manipulation + Occultisme (difficulté 7). Les victimes subissent de lourdes pénalités sensorielle et physiques."
+          "Jet: Manipulation + Occultisme (difficulté 7). Les victimes subissent de lourdes pénalités sensorielle et physiques."
       },
 
       {
@@ -707,7 +707,7 @@ const DISCIPLINES = {
           "Des tentacules d’ombre surgissent des ténèbres pour saisir, immobiliser ou écraser les ennemis du vampire.",
 
         systeme:
-          "Coûte un point de sang. Jet conseillé : Manipulation + Occultisme (difficulté 7). Le nombre de succès détermine le nombre de tentacules invoqués."
+          "Coûte un point de sang. Jet: Manipulation + Occultisme (difficulté 7). Le nombre de succès détermine le nombre de tentacules invoqués."
       },
 
       {
@@ -718,7 +718,7 @@ const DISCIPLINES = {
           "Le Lasombra fusionne avec les ténèbres et prend une apparence démoniaque couverte d’ombres mouvantes et de tentacules.",
 
         systeme:
-          "Coûte deux points de sang. Jet conseillé : Manipulation + Courage (difficulté 7). Le vampire gagne plusieurs avantages offensifs et terrifiants."
+          "Coûte deux points de sang. Jet: Manipulation + Courage (difficulté 7). Le vampire gagne plusieurs avantages offensifs et terrifiants."
       },
 
       {
@@ -770,7 +770,7 @@ const DISCIPLINES = {
           "Le vampire modifie la perception que les autres ont de lui, apparaissant sous une autre identité ou avec un visage différent.",
 
         systeme:
-          "Jet conseillé : Manipulation + Représentation. Les réussites déterminent la qualité et la crédibilité du déguisement."
+          "Jet: Manipulation + Représentation. Les réussites déterminent la qualité et la crédibilité du déguisement."
       },
 
       {
@@ -781,7 +781,7 @@ const DISCIPLINES = {
           "Le vampire disparaît directement du champ de perception des témoins, même s’ils le regardaient déjà.",
 
         systeme:
-          "Jet conseillé : Charisme + Furtivité contre la vigilance de la cible ou du groupe. Avec assez de réussites, le vampire devient totalement invisible à l’esprit des témoins."
+          "Jet: Charisme + Furtivité contre la vigilance de la cible ou du groupe. Avec assez de réussites, le vampire devient totalement invisible à l’esprit des témoins."
       },
 
       {
@@ -811,7 +811,7 @@ const DISCIPLINES = {
           "Le vampire dégage une aura magnétique irrésistible qui pousse les autres à l’écouter, l’admirer ou vouloir rester proches de lui.",
 
         systeme:
-          "Jet conseillé : Charisme + Représentation (difficulté 7). Le nombre de succès détermine combien de personnes sont affectées."
+          "Jet: Charisme + Représentation (difficulté 7). Le nombre de succès détermine combien de personnes sont affectées."
       },
 
       {
@@ -822,7 +822,7 @@ const DISCIPLINES = {
           "Le vampire projette une terreur surnaturelle capable de briser le courage de ses victimes et de provoquer la fuite ou la paralysie.",
 
         systeme:
-          "Jet conseillé : Charisme + Intimidation (difficulté 8). Les succès augmentent l’intensité de la peur."
+          "Jet: Charisme + Intimidation (difficulté 8). Les succès augmentent l’intensité de la peur."
       },
 
       {
@@ -833,7 +833,7 @@ const DISCIPLINES = {
           "La cible développe une dévotion émotionnelle intense envers le vampire et cherche naturellement à lui plaire ou à le servir.",
 
         systeme:
-          "Jet conseillé : Apparence + Empathie contre la Volonté permanente de la cible. Les succès déterminent la durée de la Transe."
+          "Jet: Apparence + Empathie contre la Volonté permanente de la cible. Les succès déterminent la durée de la Transe."
       },
 
       {
@@ -844,7 +844,7 @@ const DISCIPLINES = {
           "Le vampire appelle à lui une personne qu’il connaît. La cible ressent un besoin irrésistible de rejoindre le vampire.",
 
         systeme:
-          "Jet conseillé : Charisme + Subterfuge. Les succès déterminent la rapidité et l’intensité de la réponse."
+          "Jet: Charisme + Subterfuge. Les succès déterminent la rapidité et l’intensité de la réponse."
       },
 
       {
@@ -1503,7 +1503,7 @@ const DISCIPLINES = {
           "Le vampire modifie son propre corps : visage, voix, taille, couleur de peau ou détails physiques mineurs.",
 
         systeme:
-          "Coûte du sang selon les parties modifiées. Jet conseillé : Intelligence + Artisanat du corps. Copier quelqu’un demande plus de précision."
+          "Coûte du sang selon les parties modifiées. Jet: Intelligence + Artisanat du corps. Copier quelqu’un demande plus de précision."
       },
 
       {
@@ -1514,7 +1514,7 @@ const DISCIPLINES = {
           "Le vampire remodèle la chair d’une autre créature, altérant peau, muscles, graisse ou cartilages sans toucher aux os.",
 
         systeme:
-          "Jet conseillé : Dextérité + Artisanat du corps. Peut embellir, défigurer ou redistribuer la chair pour renforcer l’absorption."
+          "Jet: Dextérité + Artisanat du corps. Peut embellir, défigurer ou redistribuer la chair pour renforcer l’absorption."
       },
 
       {
@@ -1525,7 +1525,7 @@ const DISCIPLINES = {
           "Le vampire manipule les os comme de l’argile, permettant déformations profondes, armes osseuses ou mutilations terribles.",
 
         systeme:
-          "Jet conseillé : Force + Artisanat du corps. Peut servir à remodeler, blesser ou créer griffes, pointes et piquants."
+          "Jet: Force + Artisanat du corps. Peut servir à remodeler, blesser ou créer griffes, pointes et piquants."
       },
 
       {
