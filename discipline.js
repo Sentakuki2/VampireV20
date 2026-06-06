@@ -391,16 +391,20 @@ const DISCIPLINES = {
     sections: [
 
       {
-        nom: "Branche du Sépulcre",
+        nom: "Voie du Sépulcre",
+
+        intro:
+          "Cette voie permet au vampire d'invoquer et de diriger les esprits des morts, La voie du sépulcre est quasiment toujours la premiere apprise",
+
 
         pouvoirs: [
           {
             niveau: "•",
-            nom: "Introspection",
+            nom: "Témoin de la mort",
             description:
-              "Le nécromant voit les derniers instants d’un cadavre à travers ses yeux.",
+              "Le nécromant voit et entends les fantomes .",
             systeme:
-              "Jet: Perception + Occultisme."
+              "Jet: Perception + Intuition."
           },
 
           {
@@ -442,7 +446,7 @@ const DISCIPLINES = {
       },
 
       {
-        nom: "Branche des Ossements",
+        nom: "Voie des Ossements",
          
         intro:
           "La Branche des Ossements manipule les cadavres et permet au nécromant d’animer les morts ou de rappeler temporairement des âmes dans le monde physique.",
@@ -497,10 +501,66 @@ const DISCIPLINES = {
       },
 
       {
-        nom: "Branche des Cendres",
+        nom: "Voie du Cénotaphe",
 
         intro:
-          "La Branche des Cendres permet d’interagir directement avec le monde des morts. Elle est considérée comme la plus dangereuse des voies de Nécromancie car elle expose le vampire aux revenants et aux dangers de l’Au-delà.",
+          "cette voie permet au nécromant de voir et d'intéragir avec les connexions qui lie les esprit avec le monde du vivant.",
+
+
+        pouvoirs: [
+          {
+            niveau: "•",
+            nom: "Toucher de mort",
+            description:
+              "en touchant une personne ou un objet le vampire peut savoir si une influence fantomatique est ou a été a l'oeuvre.",
+            systeme:
+              "Jet: Perception + Intuition."
+          },
+
+          {
+            niveau: "••",
+            nom: "Révélation des entraves",
+            description:
+              "Le nécromant peut savoir avec un simple toucher l'importance de l'objet et si c'es tune entrave.",
+            systeme:
+              " 1 point de sang  + Jet: Perception + Occultisme."
+          },
+
+          {
+            niveau: "•••",
+            nom: "Fouler la tombe",
+            description:
+              "Le nécromant percoit le voile dans une zone pour savoir si le lieu entre le monde vivant et le monde des mort est fort ou faible dans ette zone.",
+            systeme:
+              "Jet de volonté."
+          },
+
+          {
+            niveau: "••••",
+            nom: "Pour qui sonne le glas",
+            description:
+              "tant que ce pouvoir est actif le vampire détecte les nouveaux fantomes qui appraissent dans un rayon d e1 km autour de lui.",
+            systeme:
+              "apres détection pour detemriner la distance et la direction approximative du nouveau fantome -> 1 point de volonté + jet de Perception + occultisme."
+          },
+
+          {
+            niveau: "•••••",
+            nom: "Entraves éphémères",
+            description:
+              "Le nécromant cree une entrave temporaire pour un esprit a partir d'un objet ou d'une personne.",
+            systeme:
+              "1 point de sang , 1 point de volonté et jet de Manipulation + Occultisme."
+          }
+        ]
+      },
+
+
+      {
+        nom: "Voie des Cendres",
+
+        intro:
+          "La Voie des Cendres permet d’interagir directement avec le monde des morts. Elle est considérée comme la plus dangereuse des voies de Nécromancie car elle expose le vampire aux revenants et aux dangers de l’Au-delà.",
 
 
         pouvoirs: [
@@ -551,6 +611,172 @@ const DISCIPLINES = {
         ]
       },
 
+       {
+        nom: "Voie Vitreuse",
+
+        intro:
+          "La voie vitreuse",
+
+
+        pouvoirs: [
+          {
+            niveau: "•",
+            nom: "Témoin de la mort",
+            description:
+              "Le nécromant possède la même visio nque celui de sfantomes et voit donc les marques entropiques des vivants.",
+            systeme:
+              "Jet: Perception + Occultisme."
+          },
+
+          {
+            niveau: "••",
+            nom: "Aura de décomposition",
+            description:
+              "Le vampire possede une aura qui décompose toute la matiere 'morte' autour de lui.",
+            systeme:
+              "le nombre de point de sang dépenser , détermine la rapidité de la 'cassure' des objets affectés."
+          },
+
+          {
+            niveau: "•••",
+            nom: "Festin d'âme",
+            description:
+              "Le vampire se nourrit des force entropiques environnante comem si c'etait du sang.",
+            systeme:
+              "point de volonté, nombre d epoint de sang récuperer selon la puissance entropique du lieu ( meurtre récent, cimitiere etc..)."
+          },
+
+          {
+            niveau: "••••",
+            nom: "Souffle de Thanatos",
+            description:
+              "Le nécromant exhale un brouillard d'energie invisible qui agit comme un phare pour les fantomes.",
+            systeme:
+              "point de sang et jet de volonté, si sur une cible unique dextérité + occultisme."
+          },
+
+          {
+            niveau: "•••••",
+            nom: "Hurlement nocturne",
+            description:
+              "Le nécromant pousse un cri qui se répercute dans le monde des vivant et des morts.",
+            systeme:
+              "1 point de volonté + 1 point de sang , me cri peux aider, ou blesser la cible selon le choix du vampire"
+          }
+        ]
+      },
+
+      {
+        nom: "Le Cadavre dans le monstre",
+         
+        intro:
+          "La voie du  Cadavre dans le monstre permet a l'utilisateur d'influer sur la nature cadavérique d'un caînite que ce soit lui ou un autre",
+
+
+        pouvoirs: [
+          {
+            niveau: "•",
+            nom: "Masque de Mort",
+            description:
+              "Le vampire prend ou inflige a un autre vampire l'apparence d'un cadavre ",
+            systeme:
+              "1 point de sang et si sur quelqu'un d'autre  jet de Vigueur + médecine."
+          },
+
+          {
+            niveau: "••",
+            nom: "Froideur du tombeau",
+            description:
+              "Le nécromant devient froid comme la mort et ne ressent absolument plus aucune douleur physique et emotionel (comme un mort)",
+            systeme:
+              "1 point de volonté qui permet entre autre de ne plus avoir de malus de blessures"
+          },
+
+          {
+            niveau: "•••",
+            nom: "Malédition de vie",
+            description:
+              "donne les pire trait 'mortel' a un mort vivant ( la faim, la soif, le fait de suer etc....).",
+            systeme:
+              "1 point de volonté et jet  Intellgence + Médecine"
+          },
+
+          {
+            niveau: "••••",
+            nom: "Don du cadavre",
+            description:
+              "Le nécromant prend l'apparence d'un cadavre et ignore les faiblesse de son espece ( pieu dans le coeur , dégat du feu normal, immunisé a la frénésie etc...).",
+            systeme:
+              "1 point de volonté"
+          },
+
+          {
+            niveau: "•••••",
+            nom: "Don de vie",
+            description:
+              "Le vampire retrouve tous les trait positive de la mortalité, sa soif de sang s'apaise, il peut manger, le soleil de le brule pas etc...",
+            systeme:
+              "12 point de sang requis  + vigueur + occultisme."
+          }
+        ]
+      },
+
+      {
+        nom: "La Pourriture du tombeau",
+         
+        intro:
+          "cette voie permet au vampire d'utiliser le pouvoir destruteur de la pourriture et la décomposition.",
+
+
+        pouvoirs: [
+          {
+            niveau: "•",
+            nom: "Destruction de l'enveloppe",
+            description:
+              "Le vampire transforme un cadavre humain en tas de poussiere.",
+            systeme:
+              "1 point de sang et pour determine rle nombre de tour jet d'intelligence + médecine."
+          },
+
+          {
+            niveau: "••",
+            nom: "Rigor mortis",
+            description:
+              "inflige une rigidité cadavérique a un mortel ou un caïnite.",
+            systeme:
+              "1 point de volonté et jet d'intelligence + médecine."
+          },
+
+          {
+            niveau: "•••",
+            nom: "Flétrissement",
+            description:
+              "endommage un membre de l'adversaire en l'atrophiant.",
+            systeme:
+              "1 point de volonté + jet de Dextérité + bagarre pour toucher une cible réticente."
+          },
+
+          {
+            niveau: "••••",
+            nom: "Corrompre la chair immortelle",
+            description:
+              "Le nécromant  afflige d'une maladie puissante et contagieuse un vampire adverse , qui lui donne des difficulté à agir et a se nourrir.",
+            systeme:
+              "1 point de volonté + jet Intelligence + Médecine  en opposition a Vigueur + Force d'ame ."
+          },
+
+          {
+            niveau: "•••••",
+            nom: "Dissoudre les chairs",
+            description:
+              "en projectant son sang sur sa victime, le nécromant tranforme la chair vampirique en poussiere ou en cendres comme si la victime est incinérée ou exposée au soleil.",
+            systeme:
+              "1 point de volonté + 2 point de sang + jet de volonté pour determiné les dégats"
+          }
+        ]
+      },
+
+    
       {
         nom: "Rituels",
 
@@ -567,6 +793,30 @@ const DISCIPLINES = {
             systeme:
               "Rituel de niveau 1."
           },
+          {
+            niveau: "",
+            nom: "Introspection",
+            description:
+              "Le nécromant voit les derniers instants d’un cadavre à travers ses yeux.",
+            systeme:
+              "Rituel de niveau 1."
+          },
+          {
+            niveau: "",
+            nom: "Pierre de connaissance",
+            description:
+              "le nécromant marque l'esprit d'une perosnne e qui lui permet de le localiser a tout moment avec l'aide d'une pierre consacrée .",
+            systeme:
+              "Rituel de niveau 1."
+          },
+          {
+            niveau: "",
+            nom: "Rituel du miroir fumant",
+            description:
+              "Le nécromant acquiert la meme perception que les fantômes.",
+            systeme:
+              "Rituel de niveau 1."
+          },
 
           {
             niveau: "",
@@ -575,6 +825,23 @@ const DISCIPLINES = {
               "La cible subit des visions de sa propre mort.",
             systeme:
               "Rituel de niveau 2."
+          },
+          {
+            niveau: "",
+            nom: "Mains de gloire",
+            description:
+              "une amin momifiée qui permet d'endormir les habitant mortel d'une maison.",
+            systeme:
+              "Rituel de niveau 2."
+          },
+
+          {
+            niveau: "",
+            nom: "danse de sang",
+            description:
+              "permet a un fantome de communiquer avecun proche vivant.",
+            systeme:
+              "Rituel de niveau 3."
           },
 
           {
