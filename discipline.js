@@ -1343,7 +1343,7 @@ const DISCIPLINES = {
     sections: [
 
       {
-        nom: "Branche du Sang",
+        nom: "Voie du Sang",
 
         intro:
           "La voie fondamentale des Tremeres, centrée sur la manipulation de la vitae vampirique et du sang des immortels.",
@@ -1404,6 +1404,71 @@ const DISCIPLINES = {
             systeme:
               "Inflige des dégâts aggravés extrêmement dangereux."
           }
+        ]
+      },
+
+      {
+        nom: "Voie Verte",
+
+        intro:
+        "La Voie Verte permet au thaumaturge de comprendre, accélérer et contrôler la vie végétale. Très rare chez les Tremere urbains, elle est particulièrement appréciée des thaumaturges liés aux forêts, aux domaines ruraux ou aux traditions druidiques.",
+
+        pouvoirs: [
+
+        {
+          niveau: "•",
+          nom: "Sagesse Végétale",
+
+          description:
+            "Le thaumaturge communie avec une plante afin de percevoir les événements qu'elle a observés.",
+
+          systeme:
+            "Permet d'obtenir des informations sur les créatures, événements ou perturbations ayant affecté la plante récemment."
+        },
+
+        {
+          niveau: "••",
+          nom: "Accélération de la Croissance",
+
+          description:
+            "Le vampire accélère drastiquement le développement naturel d'une plante.",
+
+          systeme:
+            "Permet de faire pousser rapidement fleurs, racines, buissons ou lianes normalement en quelques minutes."
+        },
+
+        {
+          niveau: "•••",
+          nom: "Danse des plantes grimpantes",
+
+          description:
+            "Le thaumaturge anime temporairement les plantes environnantes.",
+
+          systeme:
+            "Les lianes, racines ou branches peuvent saisir, entraver ou manipuler des objets simples selon la volonté du thaumaturge."
+        },
+
+        {
+          niveau: "••••",
+          nom: "Refuge Verdoyant",
+
+          description:
+            "Le vampire transforme la végétation environnante en un refuge protecteur.",
+
+          systeme:
+            "Permet de créer une zone dense de végétation offrant dissimulation, protection et obstacles aux intrus."
+        },
+
+        {
+          niveau: "•••••",
+          nom: "Éveil du Géant Forestier",
+
+          description:
+            "Le thaumaturge anime un arbre entier et lui insuffle une forme rudimentaire de conscience.",
+
+          systeme:
+            "L'arbre agit comme un serviteur temporaire capable de se déplacer, protéger une zone ou combattre des ennemis."
+        }
         ]
       },
 
@@ -1538,10 +1603,80 @@ const DISCIPLINES = {
       },
 
       {
-        nom: "Branche des Invocations",
+        nom: "voie de la Technomancie",
 
         intro:
-          "Cette branche permet d’invoquer des objets et des créations temporaires depuis le néant.",
+        "La Technomancie applique les principes de la thaumaturgie aux technologies modernes. Cette voie permet de comprendre, perturber et contrôler les systèmes électroniques et informatiques.",
+
+        pouvoirs: [
+
+
+        {
+          niveau: "•",
+          nom: "Analyse",
+
+          description:
+            "Le thaumaturge comprend instantanément le fonctionnement général d'un appareil technologique.",
+
+          systeme:
+            "Permet d'obtenir des informations sur la fonction, l'état et l'utilisation récente d'un appareil électronique."
+        },
+
+        {
+          niveau: "••",
+          nom: "Circuits Grillés",
+
+          description:
+            "Le vampire provoque une surcharge dans les composants électroniques d'un appareil.",
+
+          systeme:
+            "Permet d'endommager ou de neutraliser temporairement un appareil électronique."
+        },
+
+        {
+          niveau: "•••",
+          nom: "Crypter / Décrypter",
+
+          description:
+            "Le thaumaturge manipule les flux d'informations numériques.",
+
+          systeme:
+            "Permet de décoder, brouiller, protéger ou altérer des données informatiques."
+        },
+
+        {
+          niveau: "••••",
+          nom: "Accès à Distance",
+
+          description:
+            "Le vampire interagit avec un appareil électronique sans contact physique.",
+
+          systeme:
+            "Permet de contrôler ou d'utiliser à distance un système électronique ou informatique."
+        },
+
+        {
+          niveau: "•••••",
+          nom: "Télétravail",
+
+          description:
+            "Le thaumaturge projette sa conscience dans un réseau informatique.",
+
+          systeme:
+            "Permet d'explorer et d'interagir directement avec des systèmes informatiques comme s'il y était physiquement présent."
+        }
+
+
+        ]
+      },
+
+
+
+      {
+        nom: "Voie des Invocations",
+
+        intro:
+          "Cette voie permet d’invoquer des objets et des créations temporaires depuis le néant.",
 
         pouvoirs: [
 
@@ -1599,6 +1734,140 @@ const DISCIPLINES = {
             systeme:
               "Les créatures invoquées restent temporaires et imparfaites."
           }
+        ]
+      },
+
+      {
+        nom: "Maîtrise des Éléments",
+
+        intro:
+        "Cette voie permet au thaumaturge de communiquer avec les éléments naturels puis de les manipuler de manière de plus en plus spectaculaire. Les maîtres de cette voie peuvent finalement prendre une forme élémentaire ou invoquer des entités issues des forces primordiales.",
+
+        pouvoirs: [
+
+        {
+          niveau: "•",
+          nom: "Forces Élémentaires",
+
+          description:
+            "Le thaumaturge exerce une influence mineure sur un élément naturel proche.",
+
+          systeme:
+            "Permet de déplacer ou manipuler de petites quantités de terre, d'eau, d'air ou de feu."
+        },
+
+        {
+          niveau: "••",
+          nom: "Langue de Bois",
+
+          description:
+            "Le vampire communique avec un élément naturel afin d'obtenir des informations.",
+
+          systeme:
+            "Permet de questionner un élément sur ce qu'il a perçu dans son environnement récent."
+        },
+
+        {
+          niveau: "•••",
+          nom: "Animer l'Immobile",
+
+          description:
+            "Le thaumaturge anime temporairement une masse élémentaire.",
+
+          systeme:
+            "Permet à une quantité importante d'un élément d'agir selon les ordres du vampire."
+        },
+
+        {
+          niveau: "••••",
+          nom: "Forme Élémentaire",
+
+          description:
+            "Le vampire fusionne temporairement avec un élément naturel.",
+
+          systeme:
+            "Permet d'adopter une forme composée de terre, d'eau, d'air ou de feu selon l'élément choisi."
+        },
+
+        {
+          niveau: "•••••",
+          nom: "Invoquer les Élémentaires",
+
+          description:
+            "Le thaumaturge appelle une créature élémentaire depuis les forces primordiales.",
+
+          systeme:
+            "Permet d'invoquer un élémentaire qui servira le thaumaturge durant un temps limité."
+        }
+
+
+        ]
+      },
+
+      {
+        nom: "Puissance de Neptune",
+
+        intro:
+        "La Puissance de Neptune permet au thaumaturge de contrôler l'eau et les liquides. D'abord limitée à l'observation et à la manipulation de petites quantités d'eau, cette voie devient rapidement redoutable lorsqu'elle affecte directement les fluides contenus dans le corps des êtres vivants.",
+
+        pouvoirs: [
+
+        {
+          niveau: "•",
+          nom: "Yeux de la Mer",
+
+          description:
+            "Le thaumaturge communie avec une masse d'eau afin d'en apprendre davantage sur son environnement.",
+
+          systeme:
+            "Permet d'obtenir des informations sur les événements récents ayant eu lieu dans ou autour d'une étendue d'eau."
+        },
+
+        {
+          niveau: "••",
+          nom: "Prison Aqueuse",
+
+          description:
+            "Le vampire emprisonne sa cible dans une masse d'eau contrôlée par sa volonté.",
+
+          systeme:
+            "Permet d'immobiliser ou de ralentir considérablement une victime à l'aide d'eau environnante."
+        },
+
+        {
+          niveau: "•••",
+          nom: "Du Sang à l'Eau",
+
+          description:
+            "Le thaumaturge transforme  le sang de sa victime en eau.",
+
+          systeme:
+            "Affaiblit considérablement la cible en perturbant sa circulation sanguine et sa capacité à utiliser son sang."
+        },
+
+        {
+          niveau: "••••",
+          nom: "Mur Déferlant",
+
+          description:
+            "Le vampire soulève une immense vague d'eau afin de se protéger ou de repousser ses ennemis.",
+
+          systeme:
+            "Permet de créer une puissante barrière liquide ou une vague capable de renverser plusieurs adversaires."
+        },
+
+        {
+          niveau: "•••••",
+          nom: "Déshydratation",
+
+          description:
+            "Le thaumaturge extrait brutalement l'eau contenue dans le corps de sa victime.",
+
+          systeme:
+            "Inflige des dégâts extrêmement importants en desséchant progressivement la cible."
+        }
+
+
         ]
       },
 
@@ -1668,6 +1937,149 @@ const DISCIPLINES = {
       },
 
       {
+        nom: "Voie de la Corruption",
+
+        intro:
+        "La Voie de la Corruption permet au thaumaturge de manipuler les faiblesses psychologiques de ses victimes. Chaque pouvoir pousse progressivement la cible à abandonner ses principes, ses habitudes et son libre arbitre jusqu'à devenir dépendante de la volonté du vampire.",
+
+        pouvoirs: [
+
+        {
+          niveau: "•",
+          nom: "Contre-pied",
+
+          description:
+            "Le thaumaturge pousse sa victime à agir à l'inverse de ses habitudes naturelles.",
+
+          systeme:
+            "La cible éprouve une forte impulsion à adopter un comportement opposé à sa personnalité ou à ses convictions habituelles."
+        },
+
+        {
+          niveau: "••",
+          nom: "Subversion",
+
+          description:
+            "Le vampire altère subtilement les priorités et les motivations de sa victime.",
+
+          systeme:
+            "Permet d'affaiblir temporairement certaines convictions ou comportements de la cible afin de faciliter sa manipulation."
+        },
+
+        {
+          niveau: "•••",
+          nom: "Dissocier",
+
+          description:
+            "Le thaumaturge sépare émotionnellement sa victime de ses attachements ou de ses valeurs.",
+
+          systeme:
+            "La cible éprouve des difficultés à maintenir ses liens affectifs ou ses motivations habituelles."
+        },
+
+        {
+          niveau: "••••",
+          nom: "Dépendance",
+
+          description:
+            "Le vampire crée un besoin psychologique intense envers une personne, un objet ou un comportement.",
+
+          systeme:
+            "La victime développe une obsession ou une dépendance difficile à ignorer."
+        },
+
+        {
+          niveau: "•••••",
+          nom: "Assuétude",
+
+          description:
+            "Le thaumaturge transforme la dépendance de sa victime en véritable esclavage psychologique.",
+
+          systeme:
+            "La cible devient totalement dépendante de l'objet choisi par le vampire et souffre fortement lorsqu'elle en est privée."
+        }
+
+        ]
+      },
+
+      {
+        nom: "Contre-magie Thaumaturgique",
+
+        intro:
+        "La Contre-magie Thaumaturgique permet au vampire de neutraliser ou dissiper les effets de la Thaumaturgie et d'autres formes de magie du sang. Contrairement aux voies thaumaturgiques classiques, elle ne confère qu'un unique pouvoir dont l'efficacité augmente avec le niveau de maîtrise.",
+
+        pouvoirs: [
+        {
+        niveau: "• à •••••",
+        nom: "Contre-magie Thaumaturgique",
+
+          description:
+            "Le vampire perturbe les pouvoirs surnaturels qui l'affectent ou qui affectent son environnement immédiat.",
+
+          systeme:
+            "Le thaumaturge lance un nombre de dés dépendant de son niveau de Contre-magie. Il ne peut contrer qu'un pouvoir ou rituel dont le niveau est inférieur ou égal à son propre score de Contre-magie. Les pouvoirs de Nécromancie et autres disciplines mystiques peuvent également être contrés, mais le nombre de dés est réduit de moitié."
+        },
+
+        {
+          niveau: "•",
+          nom: "Contre-magie Thaumaturgique",
+
+          description:
+            "Protection personnelle limitée.",
+
+          systeme:
+            "2 dés. Le vampire ne peut contrer que les pouvoirs ou rituels l'affectant directement lui-même ou ses vêtements."
+        },
+
+        {
+          niveau: "••",
+          nom: "Contre-magie Thaumaturgique",
+
+          description:
+            "Protection personnelle renforcée.",
+
+          systeme:
+            "4 dés. Le vampire ne peut contrer que les pouvoirs ou rituels l'affectant directement lui-même ou ses vêtements."
+        },
+
+        {
+          niveau: "•••",
+          nom: "Contre-magie Thaumaturgique",
+
+          description:
+            "Protection étendue aux contacts directs.",
+
+          systeme:
+            "6 dés. Le vampire peut également protéger toute personne ou tout objet en contact direct avec lui."
+        },
+
+        {
+          niveau: "••••",
+          nom: "Contre-magie Thaumaturgique",
+
+          description:
+            "Protection avancée.",
+
+          systeme:
+            "8 dés. Le vampire peut protéger toute personne ou tout objet en contact direct avec lui."
+        },
+
+        {
+          niveau: "•••••",
+          nom: "Contre-magie Thaumaturgique",
+
+          description:
+            "Maîtrise complète de la dissipation magique.",
+
+          systeme:
+            "10 dés. Le vampire peut tenter de contrer un pouvoir ou un rituel affectant une cible située dans un rayon en mètres égal à sa Volonté."
+        }
+
+
+        ]
+      },
+
+      {
         nom: "Rituels Thaumaturgiques",
 
         intro:
@@ -1684,6 +2096,16 @@ const DISCIPLINES = {
 
             systeme:
               "Nécessite un objet ayant appartenu au sire."
+          },
+          {
+            niveau: "•",
+            nom: "Afflux Sanguin",
+
+            description:
+            "Le thaumaturge recrer la sensationd e boire du sang sans en absorber et ainsi mieux controler sa bête",
+
+            systeme:
+            "Permet de resister a la frénésie de la soif  durant une heure"
           },
 
           {
@@ -1708,7 +2130,30 @@ const DISCIPLINES = {
               "Protection active jusqu’à l’aube suivante."
           },
 
+
           {
+            niveau: "•",
+            nom: "Mépris de la Veuve",
+
+            description:
+            "ce rituel sert a cree des douleurs et gene a l'aide d'une poupée, il sert plus a énerver qu'autre chose .",
+
+            systeme:
+            "La poupée doit ressembler a la victime du rituel et provoquent des stimuli physique sur cette derniere."
+          },
+
+          {
+            niveau: "••",
+            nom: "Chemin du Sang",
+
+            description:
+            "Le thaumaturge peut a parti d'un echantillon de sang retracer le lignage, le clan , la génération d'un vampire ainsi que ces liens de sang et autre informations.",
+
+            systeme:
+            "Le nombre de réussite détermine le nombre d'informations."
+          },
+
+           {
             niveau: "••",
             nom: "Anti-Goules",
 
@@ -1719,6 +2164,28 @@ const DISCIPLINES = {
               "Inflige des dégâts létaux aux goules."
           },
 
+          {
+            niveau: "••",
+            nom: "Lame Brûlante",
+
+            description:
+            "Le vampire enchante une arme qui rend ces blessure difficile a soigner pour uen créature surnaturelle.",
+
+            systeme:
+            "L'arme  enchanter inflige des dégats aggravées  sur les créatures surnaturelle "
+          },
+
+          {
+            niveau: "•••",
+            nom: "Assistant Sanguin",
+
+            description:
+            "Le thaumaturge conjure un assisant temporaire en liant des materiaux ensemble pour former un assitant humanoide.",
+
+            systeme:
+            "Crée un petit serviteur (30 cm environ)  capable d'accomplir des tâches simples, de transporter de petits objets ou de servir d'éclaireur."
+          },
+    
           {
             niveau: "•••",
             nom: "Passage Incorporel",
