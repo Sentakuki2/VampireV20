@@ -250,7 +250,7 @@ const DISCIPLINES = {
       }
     ]
   },
-  daimonion: {
+ /* daimonion: {
     nom: "Daimonion",
 
     intro:
@@ -298,7 +298,7 @@ const DISCIPLINES = {
           "Rituel très long avec sacrifice de sang. Jet: Astuce + Occultisme. Un échec critique peut avoir des conséquences catastrophiques."
       }
     ]
-  },
+  },*/
   domination: {
     nom: "Domination",
 
