@@ -615,7 +615,7 @@ const DISCIPLINES = {
         nom: "Voie Vitreuse",
 
         intro:
-          "La voie vitreuse",
+          "Permet a un nécromant de controler et d'influencer les energies de la mort, extremement rare car beaucoup de néromants répugnent à l'utiliser. historiquement cette voie est lié aux Nagarajas",
 
 
         pouvoirs: [
@@ -623,7 +623,7 @@ const DISCIPLINES = {
             niveau: "•",
             nom: "Témoin de la mort",
             description:
-              "Le nécromant possède la même visio nque celui de sfantomes et voit donc les marques entropiques des vivants.",
+              "Le nécromant possède la même vision que celui des fantomes et voit donc les marques entropiques des vivants.",
             systeme:
               "Jet: Perception + Occultisme."
           },
