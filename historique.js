@@ -22,6 +22,17 @@ const HISTORIQUES = {
       "●●●●● Cinq contacts importants."
     ]
   },
+  fausseIdentite: {
+    nom: "Fausse identité",
+    intro: "Une identité alternative suffisamment crédible pour exister aux yeux de la société mortelle : papiers, comptes, traces administratives et présence numérique.",
+    niveaux: [
+      "● Identité sommaire et quelques faux papiers.",
+      "●● Identité crédible pour les contrôles courants.",
+      "●●● Identité solide avec une véritable existence administrative.",
+      "●●●● Identité très élaborée, difficile à distinguer d’une véritable identité.",
+      "●●●●● Identité presque parfaite, capable de résister à une enquête approfondie."
+    ]
+  },
 
   generation: {
     nom: "Génération",
