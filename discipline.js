@@ -1750,7 +1750,7 @@ const DISCIPLINES = {
           nom: "Forces Élémentaires",
 
           description:
-            "Le thaumaturge puise dans la puissance et la resistance de la terre et des objet squi l'entourent afin d'augmenter ces prouesses physique.",
+            "Le thaumaturge puise dans la puissance et la resistance de la terre et des objets qui l'entourent afin d'augmenter ces prouesses physique.",
 
           systeme:
             "Permet de distribuer 3 point temporaire entre la Force et la Vigueur du personnage ( 1 point de volonté pour augmenter d'un tour)."
