@@ -1750,10 +1750,10 @@ const DISCIPLINES = {
           nom: "Forces Élémentaires",
 
           description:
-            "Le thaumaturge exerce une influence mineure sur un élément naturel proche.",
+            "Le thaumaturge puise dans la puissance et la resistance de la terre et des objet squi l'entourent afin d'augmenter ces prouesses physique.",
 
           systeme:
-            "Permet de déplacer ou manipuler de petites quantités de terre, d'eau, d'air ou de feu."
+            "Permet de distribuer 3 point temporaire entre la Force et la Vigueur du personnage ( 1 point de volonté pour augmenter d'un tour)."
         },
 
         {
@@ -1993,10 +1993,10 @@ const DISCIPLINES = {
           nom: "Assuétude",
 
           description:
-            "Le thaumaturge transforme la dépendance de sa victime en véritable esclavage psychologique.",
+            "Le thaumaturgelie l'ame de la victime a la sienne ce qui le rend totalement dépendant de ce dernier .",
 
           systeme:
-            "La cible devient totalement dépendante de l'objet choisi par le vampire et souffre fortement lorsqu'elle en est privée."
+            "La cible devient psychologiquement dépendante du thaumarturge choisi et souffre fortement lorsqu'elle n'est aps en présence de ce dernier."
         }
 
         ]
