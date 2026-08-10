@@ -303,7 +303,7 @@ const DISCIPLINES = {
     nom: "Domination",
 
     intro:
-      "Discipline de contrôle mental et d’autorité surnaturelle, la Domination permet au vampire d’imposer sa volonté à une cible par le regard et la parole. Elle exige généralement que la victime comprenne l’ordre donné et ne fonctionne pas sur un vampire de Sang plus puissant.",
+      "Discipline de contrôle mental et d’autorité surnaturelle, la Domination permet au vampire d’imposer sa volonté à une cible par le regard et la parole. Elle exige généralement que la victime comprenne l’ordre donné",
 
     pouvoirs: [
       {
