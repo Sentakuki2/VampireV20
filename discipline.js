@@ -36,7 +36,7 @@ const DISCIPLINES = {
           "Le vampire perçoit des motifs cachés, des vérités dissimulées ou la nature profonde d'un individu.",
 
         systeme:
-          "Jet : Perception + Occultisme."
+          "1 point de sang et Jet : Perception + Occultisme."
       },
 
       {
@@ -93,7 +93,7 @@ const DISCIPLINES = {
         description:
           "Le vampire apaise ou écrase la Bête intérieure d’un mortel ou d’un animal, plongeant la cible dans l’apathie, la peur ou une docilité surnaturelle.",
         systeme:
-          "Jet: Manipulation + Intimidation ou Manipulation + Empathie. Il faut accumuler assez de réussites pour soumettre la volonté de la cible."
+          "dépense 1 pts de sang et Jet: Manipulation + Intimidation ou Manipulation + Empathie. Il faut accumuler assez de réussites pour soumettre la volonté de la cible."
       },
 
       {
@@ -102,7 +102,7 @@ const DISCIPLINES = {
         description:
           "Le vampire projette sa conscience dans le corps d’un animal et en prend le contrôle, laissant son propre corps immobile.",
         systeme:
-          "Jet: Manipulation + Animaux. Les réussites déterminent le degré de contrôle et les disciplines mentales utilisables pendant la possession."
+          "dépense 1 pts de sang  et Jet: Manipulation + Animaux. Les réussites déterminent le degré de contrôle et les disciplines mentales utilisables pendant la possession."
       },
 
       {
@@ -325,7 +325,7 @@ const DISCIPLINES = {
           "Le vampire implante une suggestion ou une idée dans le subconscient de la cible, qui pourra s’activer immédiatement ou plus tard selon les conditions établies.",
 
         systeme:
-          "Jet: Manipulation + Commandement contre la Volonté permanente de la cible. Les réussites déterminent la force et la complexité de la suggestion."
+          "1 point de sang et Jet: Manipulation + Commandement contre la Volonté permanente de la cible. Les réussites déterminent la force et la complexité de la suggestion."
       },
 
       {
@@ -336,7 +336,7 @@ const DISCIPLINES = {
           "Le vampire altère, efface ou reconstruit les souvenirs d’une cible, depuis un simple oubli jusqu’à une réécriture plus profonde de la mémoire.",
 
         systeme:
-          "Jet: Astuce + Subterfuge contre la Volonté de la cible. Les réussites déterminent l’ampleur des souvenirs pouvant être modifiés."
+          "1 point de sang et Jet: Astuce + Subterfuge contre la Volonté de la cible. Les réussites déterminent l’ampleur des souvenirs pouvant être modifiés."
       },
 
       {
@@ -358,7 +358,7 @@ const DISCIPLINES = {
           "Le vampire écrase l’esprit d’un mortel et projette sa conscience dans son corps, qu’il utilise alors comme une enveloppe temporaire.",
 
         systeme:
-          "Dépense de Volonté puis lutte mentale contre la cible. Une fois la Volonté temporaire de la cible brisée, un jet de Manipulation + Intimidation détermine le contrôle obtenu."
+          "Coûte deux point de sang  et Dépense de Volonté puis lutte mentale contre la cible. Une fois la Volonté temporaire de la cible brisée, un jet de Manipulation + Intimidation détermine le contrôle obtenu."
       }
     ]
   },
@@ -963,7 +963,7 @@ const DISCIPLINES = {
           "Le vampire crée un nuage de ténèbres surnaturelles qui engloutit lumière et sons, plongeant les victimes dans une obscurité totale.",
 
         systeme:
-          "Jet: Manipulation + Occultisme (difficulté 7). Les victimes subissent de lourdes pénalités sensorielle et physiques."
+          "Coûte un point de sang et Jet: Manipulation + Occultisme (difficulté 7). Les victimes subissent de lourdes pénalités sensorielle et physiques."
       },
 
       {
@@ -1026,7 +1026,7 @@ const DISCIPLINES = {
           "Le vampire peut se déplacer sans être vu, les témoins détournant inconsciemment leur attention de lui.",
 
         systeme:
-          "Aucun jet en temps normal. Un jet d’Astuce + Furtivité peut être demandé si le vampire parle, fait du bruit ou risque de révéler sa présence."
+          "1 point de sang et Aucun jet en temps normal. Un jet d’Astuce + Furtivité peut être demandé si le vampire parle, fait du bruit ou risque de révéler sa présence."
       },
 
       {
@@ -1037,7 +1037,7 @@ const DISCIPLINES = {
           "Le vampire modifie la perception que les autres ont de lui, apparaissant sous une autre identité ou avec un visage différent.",
 
         systeme:
-          "Jet: Manipulation + Représentation. Les réussites déterminent la qualité et la crédibilité du déguisement."
+          "1 point de sang + dépense eventuelle pour augmenter apparence et Jet: Manipulation + Représentation. Les réussites déterminent la qualité et la crédibilité du déguisement."
       },
 
       {
@@ -1048,7 +1048,7 @@ const DISCIPLINES = {
           "Le vampire disparaît directement du champ de perception des témoins, même s’ils le regardaient déjà.",
 
         systeme:
-          "Jet: Charisme + Furtivité contre la vigilance de la cible ou du groupe. Avec assez de réussites, le vampire devient totalement invisible à l’esprit des témoins."
+          "1 point de sang et Jet: Charisme + Furtivité contre la vigilance de la cible ou du groupe. Avec assez de réussites, le vampire devient totalement invisible à l’esprit des témoins."
       },
 
       {
@@ -1059,7 +1059,7 @@ const DISCIPLINES = {
           "Le vampire étend ses pouvoirs de dissimulation à plusieurs personnes proches de lui.",
 
         systeme:
-          "Permet de cacher une personne supplémentaire par point de Furtivité. Le groupe bénéficie du pouvoir d’Occultation choisi tant que chacun respecte ses conditions."
+          "2 point de sang - Permet de cacher une personne supplémentaire par point de Furtivité. Le groupe bénéficie du pouvoir d’Occultation choisi tant que chacun respecte ses conditions."
       }
     ]
   },
@@ -1089,7 +1089,7 @@ const DISCIPLINES = {
           "Le vampire projette une terreur surnaturelle capable de briser le courage de ses victimes et de provoquer la fuite ou la paralysie.",
 
         systeme:
-          "Jet: Charisme + Intimidation (difficulté 8). Les succès augmentent l’intensité de la peur."
+          "1 point de sang Jet et Charisme + Intimidation (difficulté 8). Les succès augmentent l’intensité de la peur."
       },
 
       {
@@ -1100,7 +1100,7 @@ const DISCIPLINES = {
           "La cible développe une dévotion émotionnelle intense envers le vampire et cherche naturellement à lui plaire ou à le servir.",
 
         systeme:
-          "Jet: Apparence + Empathie contre la Volonté permanente de la cible. Les succès déterminent la durée de la Transe."
+          "1 point de sang Jet: Apparence + Empathie contre la Volonté permanente de la cible. Les succès déterminent la durée de la Transe."
       },
 
       {
@@ -1111,7 +1111,7 @@ const DISCIPLINES = {
           "Le vampire appelle à lui une personne qu’il connaît. La cible ressent un besoin irrésistible de rejoindre le vampire.",
 
         systeme:
-          "Jet: Charisme + Subterfuge. Les succès déterminent la rapidité et l’intensité de la réponse."
+          "2 point de sang Jet et Charisme + Subterfuge. Les succès déterminent la rapidité et l’intensité de la réponse."
       },
 
       {
@@ -1122,7 +1122,7 @@ const DISCIPLINES = {
           "Le vampire devient une incarnation vivante de l’autorité surnaturelle, inspirant admiration, terreur et soumission chez ceux qui le contemplent.",
 
         systeme:
-          "Coûte un point de Volonté. Les personnes souhaitant s’opposer au vampire doivent réussir un jet de Courage."
+          "Coûte un point de Volonté et 1 point de sang . Les personnes souhaitant s’opposer au vampire doivent réussir un jet de Courage."
       }
     ]
   },
@@ -1204,7 +1204,7 @@ const DISCIPLINES = {
           "Chaque niveau de Puissance augmente considérablement la force physique du vampire. Même un faible niveau permet déjà des exploits impossibles pour un humain.",
 
         systeme:
-          "Chaque point de Puissance ajoute un succès automatique à tous les jets impliquant la Force. En combat au corps-à-corps, ces succès s’ajoutent également aux dégâts."
+          "1 point de sang pour activer ensuite chaque point de Puissance ajoute un succès automatique à tous les jets impliquant la Force. En combat au corps-à-corps, ces succès s’ajoutent également aux dégâts."
       }
     ]
   },
@@ -1245,7 +1245,7 @@ const DISCIPLINES = {
           "Après avoir touché sa cible, l’Assamite peut faire exploser ses vaisseaux sanguins à distance, provoquant une lente agonie interne.",
 
         systeme:
-          "Coûte un point de volonté. Jet opposé de vigueur. Inflige des dégâts létaux tant que le vampire continue d’alimenter le pouvoir."
+          "Coûte un point de volonté et un point de sang. Jet opposé de vigueur. Inflige des dégâts létaux tant que le vampire continue d’alimenter le pouvoir."
       },
 
       {
@@ -1297,7 +1297,7 @@ const DISCIPLINES = {
           "La langue du vampire devient longue, fourchue et dangereuse, capable de blesser ou de se nourrir à distance.",
 
         systeme:
-          "La langue inflige des dégâts aggravés et permet de boire le sang d’une cible blessée. Elle aide également à percevoir les vibrations dans l’obscurité."
+          "1 point de sang . La langue inflige des dégâts aggravés et permet de boire le sang d’une cible blessée. Elle aide également à percevoir les vibrations dans l’obscurité."
       },
 
       {
