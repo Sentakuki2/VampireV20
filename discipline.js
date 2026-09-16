@@ -36,7 +36,7 @@ const DISCIPLINES = {
           "Le vampire perçoit des motifs cachés, des vérités dissimulées ou la nature profonde d'un individu.",
 
         systeme:
-          "1 point de sang et Jet : Perception + Occultisme."
+          "1 point de sang ou de volonté et Jet : Perception + Occultisme."
       },
 
       {
@@ -116,7 +116,7 @@ const DISCIPLINES = {
     ]
   },
   augure: {
-    nom: "Augure",
+    nom: "Augure/Auspex",
 
     intro:
       "Discipline des perceptions surnaturelles, l’Augure aiguise les sens, révèle les auras, permet de lire les traces psychiques et peut projeter l’esprit hors du corps. Elle sert aussi à percer certaines formes d’invisibilité, d’illusions ou de dissimulation surnaturelle.",
@@ -146,7 +146,7 @@ const DISCIPLINES = {
         description:
           "En touchant un objet, le vampire lit les impressions psychiques laissées par ceux qui l’ont manipulé ou par les événements marquants liés à l’objet.",
         systeme:
-          "Jet: Perception + Empathie. La difficulté dépend de l’ancienneté et de l’intensité émotionnelle de l’empreinte."
+          "1 point de sang Jet: Perception + Empathie. La difficulté dépend de l’ancienneté et de l’intensité émotionnelle de l’empreinte."
       },
 
       {
@@ -155,7 +155,7 @@ const DISCIPLINES = {
         description:
           "Le vampire projette sa conscience vers l’esprit d’une cible proche afin de communiquer mentalement ou de lire ses pensées.",
         systeme:
-          "Jet: Intelligence + Subterfuge contre la Volonté de la cible. Les secrets profonds demandent davantage de réussites."
+          "1 point de sang Jet: Intelligence + Subterfuge contre la Volonté de la cible. Les secrets profonds demandent davantage de réussites."
       },
 
       {
@@ -952,7 +952,7 @@ const DISCIPLINES = {
           "Le vampire manipule les ombres existantes, leur donnant des formes inquiétantes ou oppressantes capables d’effrayer et de gêner ses victimes.",
 
         systeme:
-          "Coûte un point de sang. Les ombres peuvent gêner, masquer ou affaiblir une cible durant une scène."
+          "Les ombres peuvent gêner, masquer ou affaiblir une cible durant une scène."
       },
 
       {
@@ -1026,7 +1026,7 @@ const DISCIPLINES = {
           "Le vampire peut se déplacer sans être vu, les témoins détournant inconsciemment leur attention de lui.",
 
         systeme:
-          "1 point de sang et Aucun jet en temps normal. Un jet d’Astuce + Furtivité peut être demandé si le vampire parle, fait du bruit ou risque de révéler sa présence."
+          "1 point de sang et Aucun jet en temps normal. Un jet d’Astuce + Furtivité peut être demandé.  si le vampire parle, fait du bruit ou risque de révéler sa présence le pouvoir s'arrete."
       },
 
       {
@@ -1185,7 +1185,7 @@ const DISCIPLINES = {
           "Le vampire se transforme en nuage de brume, capable de passer par les plus petites ouvertures et d’échapper aux attaques physiques normales.",
 
         systeme:
-          "Coûte un point de sang. La transformation prend plusieurs tours. Le vampire devient immunisé aux attaques physiques ordinaires mais reste vulnérable aux effets surnaturels, au feu et au soleil."
+          "Coûte un point de sang. La transformation prend plusieurs tours, réduits par dépense de sang supplémentaire. Le vampire devient immunisé aux attaques physiques ordinaires mais reste vulnérable aux effets surnaturels, au feu et au soleil."
       }
     ]
   },
@@ -1204,7 +1204,7 @@ const DISCIPLINES = {
           "Chaque niveau de Puissance augmente considérablement la force physique du vampire. Même un faible niveau permet déjà des exploits impossibles pour un humain.",
 
         systeme:
-          "1 point de sang pour activer ensuite chaque point de Puissance ajoute un succès automatique à tous les jets impliquant la Force. En combat au corps-à-corps, ces succès s’ajoutent également aux dégâts."
+          "1 point de sang pour activer ensuite chaque point de Puissance ajoute un succès automatique à tous les jets impliquant la Force. En combat au corps-à-corps, ces succès s’ajoutent également aux dégâts. de plus ces dégat deviennent létaux"
       }
     ]
   },
